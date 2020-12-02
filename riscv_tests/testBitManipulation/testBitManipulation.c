@@ -90,61 +90,61 @@ void check_bset(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   // Check l.bset
   //-----------------------------------------------------------------
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[0]), [L] "i" (LEN_0), [I] "i" (IMM_0));
 
     check_uint32(result, "bset", res,  res_bset[0]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[1]), [L] "i" (LEN_1), [I] "i" (IMM_1));
 
     check_uint32(result, "bset", res,  res_bset[1]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[2]), [L] "i" (LEN_2), [I] "i" (IMM_2));
 
     check_uint32(result, "bset", res,  res_bset[2]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[3]), [L] "i" (LEN_3), [I] "i" (IMM_3));
 
     check_uint32(result, "bset", res,  res_bset[3]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[4]), [L] "i" (LEN_4), [I] "i" (IMM_4));
 
     check_uint32(result, "bset", res,  res_bset[4]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[5]), [L] "i" (LEN_5), [I] "i" (IMM_5));
 
     check_uint32(result, "bset", res,  res_bset[5]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[6]), [L] "i" (LEN_6), [I] "i" (IMM_6));
 
     check_uint32(result, "bset", res,  res_bset[6]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[7]), [L] "i" (LEN_7), [I] "i" (IMM_7));
 
     check_uint32(result, "bset", res,  res_bset[7]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[8]), [L] "i" (LEN_8), [I] "i" (IMM_8));
 
     check_uint32(result, "bset", res,  res_bset[8]);
 
-    asm volatile (BSET " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BSET " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[9]), [L] "i" (LEN_9), [I] "i" (IMM_9));
 
@@ -158,61 +158,61 @@ void check_bclr(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   // Check l.bclr
   //-----------------------------------------------------------------
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[0]), [L] "i" (LEN_0), [I] "i" (IMM_0));
 
     check_uint32(result, "bclr", res,  res_bclr[0]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[1]), [L] "i" (LEN_1), [I] "i" (IMM_1));
 
     check_uint32(result, "bclr", res,  res_bclr[1]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[2]), [L] "i" (LEN_2), [I] "i" (IMM_2));
 
     check_uint32(result, "bclr", res,  res_bclr[2]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[3]), [L] "i" (LEN_3), [I] "i" (IMM_3));
 
     check_uint32(result, "bclr", res,  res_bclr[3]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[4]), [L] "i" (LEN_4), [I] "i" (IMM_4));
 
     check_uint32(result, "bclr", res,  res_bclr[4]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[5]), [L] "i" (LEN_5), [I] "i" (IMM_5));
 
     check_uint32(result, "bclr", res,  res_bclr[5]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[6]), [L] "i" (LEN_6), [I] "i" (IMM_6));
 
     check_uint32(result, "bclr", res,  res_bclr[6]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[7]), [L] "i" (LEN_7), [I] "i" (IMM_7));
 
     check_uint32(result, "bclr", res,  res_bclr[7]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[8]), [L] "i" (LEN_8), [I] "i" (IMM_8));
 
     check_uint32(result, "bclr", res,  res_bclr[8]);
 
-    asm volatile (BCLR " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BCLR " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[9]), [L] "i" (LEN_9), [I] "i" (IMM_9));
 
@@ -226,61 +226,61 @@ void check_bextract(testresult_t *result, void (*start)(), void (*stop)()) {
     //-----------------------------------------------------------------
   // Check l.bextract
   //-----------------------------------------------------------------
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[0]), [L] "i" (LEN_0), [I] "i" (IMM_0));
 
     check_uint32(result, "bextract", res,  res_bextract[0]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[1]), [L] "i" (LEN_1), [I] "i" (IMM_1));
 
     check_uint32(result, "bextract", res,  res_bextract[1]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[2]), [L] "i" (LEN_2), [I] "i" (IMM_2));
 
     check_uint32(result, "bextract", res,  res_bextract[2]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[3]), [L] "i" (LEN_3), [I] "i" (IMM_3));
 
     check_uint32(result, "bextract", res,  res_bextract[3]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[4]), [L] "i" (LEN_4), [I] "i" (IMM_4));
 
     check_uint32(result, "bextract", res,  res_bextract[4]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[5]), [L] "i" (LEN_5), [I] "i" (IMM_5));
 
     check_uint32(result, "bextract", res,  res_bextract[5]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[6]), [L] "i" (LEN_6), [I] "i" (IMM_6));
 
     check_uint32(result, "bextract", res,  res_bextract[6]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[7]), [L] "i" (LEN_7), [I] "i" (IMM_7));
 
     check_uint32(result, "bextract", res,  res_bextract[7]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[8]), [L] "i" (LEN_8), [I] "i" (IMM_8));
 
     check_uint32(result, "bextract", res,  res_bextract[8]);
 
-    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[9]), [L] "i" (LEN_9), [I] "i" (IMM_9));
 
@@ -294,61 +294,61 @@ void check_bextractu(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   // Check l.bextractu
   //-----------------------------------------------------------------
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[0]), [L] "i" (LEN_0), [I] "i" (IMM_0));
 
     check_uint32(result, "bextractu", res,  res_bextractu[0]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[1]), [L] "i" (LEN_1), [I] "i" (IMM_1));
 
     check_uint32(result, "bextractu", res,  res_bextractu[1]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[2]), [L] "i" (LEN_2), [I] "i" (IMM_2));
 
     check_uint32(result, "bextractu", res,  res_bextractu[2]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[3]), [L] "i" (LEN_3), [I] "i" (IMM_3));
 
     check_uint32(result, "bextractu", res,  res_bextractu[3]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[4]), [L] "i" (LEN_4), [I] "i" (IMM_4));
 
     check_uint32(result, "bextractu", res,  res_bextractu[4]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[5]), [L] "i" (LEN_5), [I] "i" (IMM_5));
 
     check_uint32(result, "bextractu", res,  res_bextractu[5]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[6]), [L] "i" (LEN_6), [I] "i" (IMM_6));
 
     check_uint32(result, "bextractu", res,  res_bextractu[6]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[7]), [L] "i" (LEN_7), [I] "i" (IMM_7));
 
     check_uint32(result, "bextractu", res,  res_bextractu[7]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[8]), [L] "i" (LEN_8), [I] "i" (IMM_8));
 
     check_uint32(result, "bextractu", res,  res_bextractu[8]);
 
-    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BEXTRACTU " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (op_a[9]), [L] "i" (LEN_9), [I] "i" (IMM_9));
 
@@ -364,70 +364,70 @@ void check_binsert(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check l.binsert
   //-----------------------------------------------------------------
     res = op_c[0];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[0]), [L] "i" (LEN_0), [I] "i" (IMM_0));
 
     check_uint32(result, "binsert", res,  res_binsert[0]);
 
     res = op_c[1];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[1]), [L] "i" (LEN_1), [I] "i" (IMM_1));
 
     check_uint32(result, "binsert", res,  res_binsert[1]);
 
     res = op_c[2];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[2]), [L] "i" (LEN_2), [I] "i" (IMM_2));
 
     check_uint32(result, "binsert", res,  res_binsert[2]);
 
     res = op_c[3];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[3]), [L] "i" (LEN_3), [I] "i" (IMM_3));
 
     check_uint32(result, "binsert", res,  res_binsert[3]);
 
     res = op_c[4];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[4]), [L] "i" (LEN_4), [I] "i" (IMM_4));
 
     check_uint32(result, "binsert", res,  res_binsert[4]);
 
     res = op_c[5];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[5]), [L] "i" (LEN_5), [I] "i" (IMM_5));
 
     check_uint32(result, "binsert", res,  res_binsert[5]);
 
     res = op_c[6];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[6]), [L] "i" (LEN_6), [I] "i" (IMM_6));
 
     check_uint32(result, "binsert", res,  res_binsert[6]);
 
     res = op_c[7];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[7]), [L] "i" (LEN_7), [I] "i" (IMM_7));
 
     check_uint32(result, "binsert", res,  res_binsert[7]);
 
     res = op_c[8];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[8]), [L] "i" (LEN_8), [I] "i" (IMM_8));
 
     check_uint32(result, "binsert", res,  res_binsert[8]);
 
     res = op_c[9];
-    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\n"
+    asm volatile (BINSERT " %[c], %[a], %[L],%[I]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (op_a[9]), [L] "i" (LEN_9), [I] "i" (IMM_9));
 
@@ -445,7 +445,7 @@ void check_bset_reg(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check p.bsetr
   //-----------------------------------------------------------------
     for(i=0;i<NumberOfStimuli;i++){
-      asm volatile (BSETR " %[c], %[a], %[b]\n"
+      asm volatile (BSETR " %[c], %[a], %[b]\r\n"
                     : [c] "=r" (res)
                     : [a] "r"  (op_a_reg[i]), [b] "r" (op_b_reg[i]));
 
@@ -461,7 +461,7 @@ void check_bclr_reg(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check p.bclrr
   //-----------------------------------------------------------------
     for(i=0;i<NumberOfStimuli;i++){
-      asm volatile (BCLRR " %[c], %[a], %[b]\n"
+      asm volatile (BCLRR " %[c], %[a], %[b]\r\n"
                     : [c] "=r" (res)
                     : [a] "r"  (op_a_reg[i]), [b] "r" (op_b_reg[i]));
 
@@ -477,7 +477,7 @@ void check_bextract_reg(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check p.bextractr
   //-----------------------------------------------------------------
     for(i=0;i<NumberOfStimuli;i++){
-      asm volatile (BEXTRACTR " %[c], %[a], %[b]\n"
+      asm volatile (BEXTRACTR " %[c], %[a], %[b]\r\n"
                     : [c] "=r" (res)
                     : [a] "r"  (op_a_reg[i]), [b] "r" (op_b_reg[i]));
 
@@ -492,7 +492,7 @@ void check_bextractu_reg(testresult_t *result, void (*start)(), void (*stop)()) 
   // Check p.bextractr
   //-----------------------------------------------------------------
     for(i=0;i<NumberOfStimuli;i++){
-      asm volatile (BEXTRACTUR " %[c], %[a], %[b]\n"
+      asm volatile (BEXTRACTUR " %[c], %[a], %[b]\r\n"
                     : [c] "=r" (res)
                     : [a] "r"  (op_a_reg[i]), [b] "r" (op_b_reg[i]));
 
@@ -509,7 +509,7 @@ void check_binsert_reg(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
     for(i=0;i<NumberOfStimuli;i++){
       res = op_c_reg[i];
-      asm volatile (BINSERTR " %[c], %[a], %[b]\n"
+      asm volatile (BINSERTR " %[c], %[a], %[b]\r\n"
                     : [c] "+r" (res)
                     : [a] "r"  (op_a_reg[i]), [b] "r" (op_b_reg[i]));
 

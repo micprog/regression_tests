@@ -47,7 +47,7 @@ void check(testresult_t *result, void (*start)(), void (*stop)())
 {
   int i,j;
 
-  printf("Start towerofhanoi\n");
+  printf("Start towerofhanoi\r\n");
 
   for (i=0;i<NR_PLATES;i++){
     A[i] = i;
@@ -62,7 +62,7 @@ void check(testresult_t *result, void (*start)(), void (*stop)())
   for (i=0;i<NR_PLATES;i++) {
     if (B[i] != i) {
 #ifdef DEBUG_OUTPUT
-      printf("expected: %d, actual: %d\n",i,B[i]);
+      printf("expected: %d, actual: %d\r\n",i,B[i]);
 #endif
       result->errors++;
     }

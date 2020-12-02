@@ -47,22 +47,22 @@ testcase_t testcases[] = {
 
 #define shuffle_b_sci(arg_a, arg_b, arg_exp) \
   if ((arg_b >> 6) == 0) { \
-    asm volatile (SHUFFLEI0_B_SCI " %[c], %[a], %[imm]\n" \
+    asm volatile (SHUFFLEI0_B_SCI " %[c], %[a], %[imm]\r\n" \
       : [c] "+r" (res) \
       : [a] "r"  (arg_a), [imm] "i" (arg_b)); \
     check_uint32(result, "shuffle_b", res, arg_exp); \
   } else if ((arg_b >> 6) == 1) { \
-    asm volatile (SHUFFLEI1_B_SCI " %[c], %[a], %[imm]\n" \
+    asm volatile (SHUFFLEI1_B_SCI " %[c], %[a], %[imm]\r\n" \
       : [c] "+r" (res) \
       : [a] "r"  (arg_a), [imm] "i" (arg_b)); \
     check_uint32(result, "shuffle_b", res, arg_exp); \
   } else if ((arg_b >> 6) == 2) { \
-    asm volatile (SHUFFLEI2_B_SCI " %[c], %[a], %[imm]\n" \
+    asm volatile (SHUFFLEI2_B_SCI " %[c], %[a], %[imm]\r\n" \
       : [c] "+r" (res) \
       : [a] "r"  (arg_a), [imm] "i" (arg_b)); \
     check_uint32(result, "shuffle_b", res, arg_exp); \
   } else { \
-    asm volatile (SHUFFLEI3_B_SCI " %[c], %[a], %[imm]\n" \
+    asm volatile (SHUFFLEI3_B_SCI " %[c], %[a], %[imm]\r\n" \
       : [c] "+r" (res) \
       : [a] "r"  (arg_a), [imm] "i" (arg_b)); \
     check_uint32(result, "shuffle_b", res, arg_exp); \
@@ -96,68 +96,68 @@ void check_shuffle_h(testresult_t *result, void (*start)(), void (*stop) ()) {
   // Check pv.shuffle.*.h
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
-    asm volatile (SHUFFLE_H " %[c], %[a], %[b]\n"
+    asm volatile (SHUFFLE_H " %[c], %[a], %[b]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_shuffle_h_a[i]), [b] "r" (g_shuffle_h_b[i]));
 
     check_uint32(result, "shuffle_h", res, g_shuffle_h_exp[i]);
   }
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
              : [c] "+r" (res)
              : [a] "r"  (g_shuffle_sci_h_a[0]), [imm] "i" (g_shuffle_sci_h_0));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[0]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[1]), [imm] "i" (g_shuffle_sci_h_1));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[1]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[2]), [imm] "i" (g_shuffle_sci_h_2));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[2]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[3]), [imm] "i" (g_shuffle_sci_h_3));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[3]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[4]), [imm] "i" (g_shuffle_sci_h_4));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[4]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[5]), [imm] "i" (g_shuffle_sci_h_5));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[5]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[6]), [imm] "i" (g_shuffle_sci_h_6));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[6]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[7]), [imm] "i" (g_shuffle_sci_h_7));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[7]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[8]), [imm] "i" (g_shuffle_sci_h_8));
 
   check_uint32(result, "shuffle_h", res, g_shuffle_sci_h_exp[8]);
 
-  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\n"
+  asm volatile (SHUFFLE_H_SCI " %[c], %[a], %[imm]\r\n"
               : [c] "+r" (res)
               : [a] "r"  (g_shuffle_sci_h_a[9]), [imm] "i" (g_shuffle_sci_h_9));
 
@@ -171,7 +171,7 @@ void check_shuffle_b(testresult_t *result, void (*start)(), void (*stop) ()) {
   // Check pv.shuffle.*.b
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
-    asm volatile (SHUFFLE_B " %[c], %[a], %[b]\n"
+    asm volatile (SHUFFLE_B " %[c], %[a], %[b]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (g_shuffle_b_a[i]), [b] "r" (g_shuffle_b_b[i]));
 
@@ -201,7 +201,7 @@ void check_shuffle2_h(testresult_t *result, void (*start)(), void (*stop) ()) {
   // Check pv.shuffle2.*.h
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
-    asm volatile (SHUFFLE2_H " %[c], %[a], %[b]\n"
+    asm volatile (SHUFFLE2_H " %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_shuffle2_h_c[i])
                   : [a] "r"  (g_shuffle2_h_a[i]), [b] "r" (g_shuffle2_h_b[i]));
 
@@ -216,7 +216,7 @@ void check_shuffle2_b(testresult_t *result, void (*start)(), void (*stop) () ){
   // Check pv.shuffle2.*.b
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
-    asm volatile (SHUFFLE2_B " %[c], %[a], %[b]\n"
+    asm volatile (SHUFFLE2_B " %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_shuffle2_b_c[i])
                   : [a] "r"  (g_shuffle2_b_a[i]), [b] "r" (g_shuffle2_b_b[i]));
 
@@ -231,7 +231,7 @@ void check_pack_h(testresult_t *result, void (*start)(), void (*stop) ()) {
   // Check pv.pack.h
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
-    asm volatile (PACK_H_SC " %[c], %[a], %[b]\n"
+    asm volatile (PACK_H_SC " %[c], %[a], %[b]\r\n"
                   : [c] "+r" (res)
                   : [a] "r"  (g_pack_h_a[i]), [b] "r" (g_pack_h_b[i]));
 
@@ -247,7 +247,7 @@ void check_pack_hi_b(testresult_t *result, void (*start)(), void (*stop) ()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (PACKHI_B_SC " %[c], %[a], %[b]\n"
+    asm volatile (PACKHI_B_SC " %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_pack_hi_b_c[i])
                   : [a] "r"  (g_pack_hi_b_a[i]), [b] "r" (g_pack_hi_b_b[i]));
 
@@ -262,7 +262,7 @@ void check_pack_lo_b(testresult_t *result, void (*start)(), void (*stop) ()) {
   // Check pv.packlo.b
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
-    asm volatile (PACKLO_B_SC " %[c], %[a], %[b]\n"
+    asm volatile (PACKLO_B_SC " %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_pack_lo_b_c[i])
                   : [a] "r"  (g_pack_lo_b_a[i]), [b] "r" (g_pack_lo_b_b[i]));
 

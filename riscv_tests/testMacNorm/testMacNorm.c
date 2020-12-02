@@ -112,7 +112,7 @@ void check_mulsNl(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MULSNL
-    asm volatile (MULSNL " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULSNL " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_mulsNl_a[i]), [b] "r" (g_mulsNl_b[i]), [imm] "i" (g_mulsNl_IMM));
 
@@ -132,7 +132,7 @@ void check_muluNl(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MULUNL
-    asm volatile (MULUNL " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULUNL " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_muluNl_a[i]), [b] "r" (g_muluNl_b[i]), [imm] "i" (g_muluNl_IMM));
 
@@ -152,7 +152,7 @@ void check_mulusNl(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MULUSNL
-    asm volatile (MULUSNL " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULUSNL " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_mulusNl_a[i]), [b] "r" (g_mulusNl_b[i]), [imm] "i" (g_mulusNl_IMM));
 
@@ -175,7 +175,7 @@ void check_mulsNr(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MULSNR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULSNR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_mulsNr_a[i]), [b] "r" (g_mulsNr_b[i]), [imm] "i" (g_mulsNr_IMM));
 
@@ -195,7 +195,7 @@ void check_muluNr(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MULUNR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULUNR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_muluNr_a[i]), [b] "r" (g_muluNr_b[i]), [imm] "i" (g_muluNr_IMM));
 
@@ -213,7 +213,7 @@ void check_mulusNr(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MULUSNR
-    asm volatile (MULUSNR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULUSNR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_mulusNr_a[i]), [b] "r" (g_mulusNr_b[i]), [imm] "i" (g_mulusNr_IMM));
 
@@ -236,7 +236,7 @@ void check_mulsNrR(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MULSNRR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULSNRR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_mulsNrR_a[i]), [b] "r" (g_mulsNrR_b[i]), [imm] "i" (g_mulsNrR_IMM));
 
@@ -257,7 +257,7 @@ void check_muluNrR(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MULUNRR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULUNRR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_muluNrR_a[i]), [b] "r" (g_muluNrR_b[i]), [imm] "i" (g_muluNrR_IMM));
 
@@ -276,7 +276,7 @@ void check_mulusNrR(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MULUSNRR
-    asm volatile (MULUSNRR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MULUSNRR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "=r" (res)
                   : [a] "r"  (g_mulusNrR_a[i]), [b] "r" (g_mulusNrR_b[i]), [imm] "i" (g_mulusNrR_IMM));
 
@@ -299,7 +299,7 @@ void check_macsNl(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MACSNL
-    asm volatile (MACSNL " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACSNL " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macsNl_c[i])
                   : [a] "r"  (g_macsNl_a[i]), [b] "r" (g_macsNl_b[i]), [imm] "i" (g_macsNl_IMM));
 
@@ -318,7 +318,7 @@ void check_macuNl(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MACUNL
-    asm volatile (MACUNL " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACUNL " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macuNl_c[i])
                   : [a] "r"  (g_macuNl_a[i]), [b] "r" (g_macuNl_b[i]), [imm] "i" (g_macuNl_IMM));
 
@@ -338,7 +338,7 @@ void check_macusNl(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MACUSNL
-    asm volatile (MACUSNL " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACUSNL " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macusNl_c[i])
                   : [a] "r"  (g_macusNl_a[i]), [b] "r" (g_macusNl_b[i]), [imm] "i" (g_macusNl_IMM));
 
@@ -361,7 +361,7 @@ void check_macsNr(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MACSNR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACSNR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macsNr_c[i])
                   : [a] "r"  (g_macsNr_a[i]), [b] "r" (g_macsNr_b[i]), [imm] "i" (g_macsNr_IMM));
 
@@ -380,7 +380,7 @@ void check_macuNr(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MACUNR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACUNR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macuNr_c[i])
                   : [a] "r"  (g_macuNr_a[i]), [b] "r" (g_macuNr_b[i]), [imm] "i" (g_macuNr_IMM));
 
@@ -400,7 +400,7 @@ void check_macusNr(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MACUSNR
-    asm volatile (MACUSNR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACUSNR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macusNr_c[i])
                   : [a] "r"  (g_macusNr_a[i]), [b] "r" (g_macusNr_b[i]), [imm] "i" (g_macusNr_IMM));
 
@@ -424,7 +424,7 @@ void check_macsNrR(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MACSNRR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACSNRR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macsNrR_c[i])
                   : [a] "r"  (g_macsNrR_a[i]), [b] "r" (g_macsNrR_b[i]), [imm] "i" (g_macsNrR_IMM));
 
@@ -443,7 +443,7 @@ void check_macuNrR(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 
-    asm volatile (MACUNRR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACUNRR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macuNrR_c[i])
                   : [a] "r"  (g_macuNrR_a[i]), [b] "r" (g_macuNrR_b[i]), [imm] "i" (g_macuNrR_IMM));
 
@@ -462,7 +462,7 @@ void check_macusNrR(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   for(i = 0; i < NumberOfStimuli; i++) {
 #ifdef MACUSNRR
-    asm volatile (MACUSNRR " %[c], %[a], %[b],%[imm]\n"
+    asm volatile (MACUSNRR " %[c], %[a], %[b],%[imm]\r\n"
                   : [c] "+r" (g_macusNrR_c[i])
                   : [a] "r"  (g_macusNrR_a[i]), [b] "r" (g_macusNrR_b[i]), [imm] "i" (g_macusNrR_IMM));
 

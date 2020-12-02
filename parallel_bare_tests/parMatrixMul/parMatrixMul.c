@@ -75,7 +75,7 @@ void matrix_multiplication(testresult_t *result, void (*start)(), void (*stop)()
   int lb, ub, chunk;
 
   if (coreid == 0){
-    printf("Start ParMatrixMul\n",0,0,0,0);
+    printf("Start ParMatrixMul\r\n",0,0,0,0);
     // initialize matrix A and B
     initialize_mat();
   }

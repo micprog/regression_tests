@@ -26,7 +26,7 @@ int main()
 
   if (coreid == 0){
 
-    printf("Start stencil\n");
+    printf("Start stencil\r\n");
 
     for (i=0;i<N;i++) {
       for (k=0;k<M;k++)
@@ -44,15 +44,15 @@ int main()
       stencil(A, h_R, W);
 
       stop_timer();
-      printf("Loop %d cycles: %d\n", j, get_time());
+      printf("Loop %d cycles: %d\r\n", j, get_time());
     }
 
     for (i=0;i<N;i++) {
       for (k=0;k<M;k++) {
-        //       printf("%d %d\n",RESULT[i*M+k],R[i*M+k],0,0);
+        //       printf("%d %d\r\n",RESULT[i*M+k],R[i*M+k],0,0);
         if (RESULT_STENCIL[i*M+k] != h_R[i*M+k]) {
           error = error + 1;
-          printf("Error occurred at i=%d k=%d; Computed result R=%d does not match expected Result=%d\n",i,k,h_R[i*M+k],RESULT_STENCIL[i*M+k]);
+          printf("Error occurred at i=%d k=%d; Computed result R=%d does not match expected Result=%d\r\n",i,k,h_R[i*M+k],RESULT_STENCIL[i*M+k]);
         }
       }
     }
@@ -82,12 +82,12 @@ void stencil(int* A, int* h_R, int* W)
     for (d = 0 ; d < M; d++)
     {
       getEntries(neighbors, weights, A, W, c, d);
-      //printf("neighbors %d %d %d %d\n",neighbors[0],neighbors[1],neighbors[2],neighbors[3]);
-      //printf("weights   %d %d %d %d\n",weights[0],weights[1],weights[2],weights[3]);
+      //printf("neighbors %d %d %d %d\r\n",neighbors[0],neighbors[1],neighbors[2],neighbors[3]);
+      //printf("weights   %d %d %d %d\r\n",weights[0],weights[1],weights[2],weights[3]);
       h_R[c*M+d] = A[c*M+d] + neighbors[3]*weights[3] + neighbors[0]*weights[0] + neighbors[1]*weights[1] + neighbors[2]*weights[2];
 
-      //printf("A: %d\n",A[c*M+d],0,0,0);
-      //printf("RESULT: %d\n",RESULT[c*M+d],0,0,0);
+      //printf("A: %d\r\n",A[c*M+d],0,0,0);
+      //printf("RESULT: %d\r\n",RESULT[c*M+d],0,0,0);
     }
   }
 }

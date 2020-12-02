@@ -66,7 +66,7 @@ for (int u = 0; u < 2; ++u)
     rx_buffer[j] = 0;
   }
 
-  printf("[%d, %d] Start test uart %d\n",  get_cluster_id(), get_core_id(), u);
+  printf("[%d, %d] Start test uart %d\r\n",  get_cluster_id(), get_core_id(), u);
   uart_open(u,UART_BAUDRATE);
 
   for (int i = 0; i < BUFFER_SIZE; ++i)
@@ -76,9 +76,9 @@ for (int u = 0; u < 2; ++u)
     
     if (tx_buffer[i] == rx_buffer[i])
     {
-      printf("PASS: tx %c, rx %c\n", tx_buffer[i],rx_buffer[i]);
+      printf("PASS: tx %c, rx %c\r\n", tx_buffer[i],rx_buffer[i]);
     }else{
-      printf("FAIL: tx %c, rx %c\n", tx_buffer[i],rx_buffer[i]);
+      printf("FAIL: tx %c, rx %c\r\n", tx_buffer[i],rx_buffer[i]);
       error++;
     }
   }

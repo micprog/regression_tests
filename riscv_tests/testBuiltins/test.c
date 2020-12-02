@@ -53,7 +53,7 @@ double fsqrt64(double a, double b);
     time = get_time() / nbIter; \
   } while (0);
 
-    //printf("%s cycles: %d\n", str, time);	\
+    //printf("%s cycles: %d\r\n", str, time);	\
 
 
 int main()
@@ -89,14 +89,14 @@ int main()
   bench("Float sqrt", fsqrtC, fsqrt, NB_SQRT, 3483.3343f, 0.0f);
   //bench("Double sqrt", fsqrt64C, fsqrt64, NB_SQRT, 286352323.987666, 0.0);
 
-  printf("\n");
-  printf("           32b  |     64b  |   float  |  double\n", divC, div64C, fdivC, fdiv64C);
-  printf("----------------|----------|----------|--------\n");
-  printf("Div     %6d  |  %6d  |  %6d  |  %6d\n", divC, div64C, fdivC, fdiv64C);
-  printf("Add     %6d  |  %6d  |  %6d  |  %6d\n", addC, add64C, faddC, fadd64C);
-  printf("Mul     %6d  |  %6d  |  %6d  |  %6d\n", mulC, mul64C, fmulC, fmul64C);
-  printf("Cos          -  |       -  |  %6d  |  %6d\n", fcosC, fcos64C);
-  printf("Sqrt         -  |       -  |  %6d  |  %6d\n", fsqrtC, fsqrt64C);
+  printf("\r\n");
+  printf("           32b  |     64b  |   float  |  double\r\n", divC, div64C, fdivC, fdiv64C);
+  printf("----------------|----------|----------|--------\r\n");
+  printf("Div     %6d  |  %6d  |  %6d  |  %6d\r\n", divC, div64C, fdivC, fdiv64C);
+  printf("Add     %6d  |  %6d  |  %6d  |  %6d\r\n", addC, add64C, faddC, fadd64C);
+  printf("Mul     %6d  |  %6d  |  %6d  |  %6d\r\n", mulC, mul64C, fmulC, fmul64C);
+  printf("Cos          -  |       -  |  %6d  |  %6d\r\n", fcosC, fcos64C);
+  printf("Sqrt         -  |       -  |  %6d  |  %6d\r\n", fsqrtC, fsqrt64C);
 
 
   return 0;

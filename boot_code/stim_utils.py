@@ -99,7 +99,7 @@ class stim(object):
 
     with open(filename, 'w') as file:
       for key in sorted(self.mem.keys()):
-        file.write('%X_%0*X\n' % (int(key), width*2, self.mem.get(key)))
+        file.write('%X_%0*X\r\n' % (int(key), width*2, self.mem.get(key)))
 
   def __parse_binaries(self, width):
 

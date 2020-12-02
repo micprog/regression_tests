@@ -210,7 +210,7 @@ static inline char fIsInf(float x);
 static inline float fSqrt(float a)
 {
   float c;
-  asm ("fsqrt.s %[c], %[a]\n"
+  asm ("fsqrt.s %[c], %[a]\r\n"
 		: [c] "=f" (c)
 		: [a] "f"  (a));
   return c;
@@ -224,7 +224,7 @@ static inline float fDiv(float a, float b)
 #ifndef LINUX
 #ifndef FP_SW_EMUL
   float c;
-  asm ("fdiv.s %[c], %[a], %[b]\n"
+  asm ("fdiv.s %[c], %[a], %[b]\r\n"
 		: [c] "=f" (c)
 		: [a] "f"  (a), [b] "f" (b));
   return c;
@@ -332,7 +332,7 @@ static inline char fIsInf(float x)
 #ifndef LINUX
 #ifndef FP_SW_EMUL
   int class;
-  asm ("fclass.s %[c], %[a]\n"
+  asm ("fclass.s %[c], %[a]\r\n"
        : [c] "=r" (class)
        : [a] "f"  (x));
   return ((class & CLASS_INF_MASK)!=0);

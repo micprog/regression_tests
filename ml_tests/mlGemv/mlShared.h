@@ -180,32 +180,32 @@ static inline void flagPassFail(unsigned char pass, int coreid)
 {
   if(!pass)
   {
-    printf("kernel did not pass on core %d !!\n",coreid);
+    printf("kernel did not pass on core %d !!\r\n",coreid);
   }
   else
   {
-    printf("kernel passed on core  %d\n",coreid);
+    printf("kernel passed on core  %d\r\n",coreid);
   }
   return;
 }
 
 static inline void cycleCount()
 {
-  printf("Kernel completed in %d cycles!\n",cpu_perf_get(0));
+  printf("Kernel completed in %d cycles!\r\n",cpu_perf_get(0));
 }
 
 static inline void printErrors(unsigned char error, int id, float is, float exp_hi, float exp_lo)
 {
   int coreid=get_core_id();
   if (error) {
-    printf("Error occured!\n");
+    printf("Error occured!\r\n");
     printf("ID: %d \t", id*4+coreid);
     printFloat(exp_lo);
     printf("\t < ");
     printFloat(is);
     printf("\t < ");
     printFloat(exp_hi);
-    printf("\n");
+    printf("\r\n");
   }
 }
 

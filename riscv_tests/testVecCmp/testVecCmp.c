@@ -170,7 +170,7 @@ int main()
 
 #define util_check_rr(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b]\n" \
+      asm volatile (asm_str " %[c], %[a], %[b]\r\n" \
                     : [c] "+r" (prefix ## _act[i]) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -179,7 +179,7 @@ int main()
 
 #define util_check_rr_sci(asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], " imm "\n" \
+      asm volatile (asm_str " %[c], %[a], " imm "\r\n" \
                     : [c] "+r" (prefix ## _act[i]) \
                     : [a] "r"  (prefix ## _a[i])); \
       test_check(asm_str, prefix ## _act[i], prefix ## _exp[i]); \
@@ -187,7 +187,7 @@ int main()
 
 #define util_check_rri(asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b], " imm "\n" \
+      asm volatile (asm_str " %[c], %[a], %[b], " imm "\r\n" \
                     : [c] "+r" (prefix ## _act[i]) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -196,7 +196,7 @@ int main()
 
 #define util_check_ri(asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], " imm "\n" \
+      asm volatile (asm_str " %[c], %[a], " imm "\r\n" \
                     : [c] "+r" (prefix ## _act[i]) \
                     : [a] "r"  (prefix ## _a[i])); \
       test_check(asm_str, prefix ## _act[i], prefix ## _exp[i]); \
@@ -204,7 +204,7 @@ int main()
 
 #define util_check_r(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a]\n" \
+      asm volatile (asm_str " %[c], %[a]\r\n" \
                     : [c] "+r" (prefix ## _act[i]) \
                     : [a] "r"  (prefix ## _a[i])); \
       test_check(asm_str, prefix ## _act[i], prefix ## _exp[i]); \
@@ -212,8 +212,8 @@ int main()
 
 #define util_check_cmov_rr(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b]\n" \
-                    "l.cmov   %[d], %[e0], %[e1]\n" \
+      asm volatile (asm_str " %[c], %[a], %[b]\r\n" \
+                    "l.cmov   %[d], %[e0], %[e1]\r\n" \
                     : [c] "+r" (prefix ## _act[i]), \
                       [d] "+r" (prefix ## _act2[i]) \
                     : [a] "r"  (prefix ## _a[i]), \
@@ -226,8 +226,8 @@ int main()
 
 #define util_check_cmov_rr_sci(asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], " imm "\n" \
-                    "l.cmov   %[d], %[e0], %[e1]\n" \
+      asm volatile (asm_str " %[c], %[a], " imm "\r\n" \
+                    "l.cmov   %[d], %[e0], %[e1]\r\n" \
                     : [c] "+r" (prefix ## _act[i]), \
                       [d] "+r" (prefix ## _act2[i]) \
                     : [a] "r"  (prefix ## _a[i]), \

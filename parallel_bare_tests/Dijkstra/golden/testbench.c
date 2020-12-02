@@ -40,7 +40,7 @@ int main ( int argc, char **argv )
   Print the distance matrix.
 */
 
-  printf("int dijkstra_in[NV][NV] = {\n");
+  printf("int dijkstra_in[NV][NV] = {\r\n");
   for ( i = 0; i < NV; i++ )
     {
       for ( j = 0; j < NV; j++ )
@@ -49,9 +49,9 @@ int main ( int argc, char **argv )
 	    printf ("  %10d,", ohd[i][j] );
 	  }
 	}
-      fprintf ( stdout, "\n" );
+      fprintf ( stdout, "\r\n" );
     }
-  printf("};\n\n");
+  printf("};\r\n\r\n");
   
   /*
   Carry out the algorithm.
@@ -62,12 +62,12 @@ int main ( int argc, char **argv )
     Print the results.
   */
   
-  printf("int dijkstra_ref[NV] = {\n");
+  printf("int dijkstra_ref[NV] = {\r\n");
   for ( i = 0; i < NV; i++ )
     {
-      fprintf ( stdout, " %2d,\n", mind[i] );
+      fprintf ( stdout, " %2d,\r\n", mind[i] );
     }
-  printf("};\n\n");
+  printf("};\r\n\r\n");
   
   return 0;
 }
@@ -161,7 +161,7 @@ void dijkstra_distance (int mind[NV], int ohd[NV][NV] )
         if ( mv != - 1 )
         {
           connected[mv] = 1;
-          //printf ( "  P%d: Connecting node %d.\n", my_id, mv );
+          //printf ( "  P%d: Connecting node %d.\r\n", my_id, mv );
         }
       }
 /*

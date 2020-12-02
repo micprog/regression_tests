@@ -71,7 +71,7 @@ int main()
   dma_barrier();
 #endif
   synch_barrier();
-  printf("DMA A done\n");
+  printf("DMA A done\r\n");
 
   // load matrix B
 #if MCHAN_VERSION >= 6
@@ -86,7 +86,7 @@ int main()
   dma_barrier();
 #endif
   synch_barrier();
-  printf("DMA B done\n");
+  printf("DMA B done\r\n");
 
   for (i = 0; i<2; i++) {
 #if MCHAN_VERSION >= 6
@@ -104,13 +104,13 @@ int main()
 
     for (j = 0; j < WC*HC; j++) {
       if (h_A[offset + j] != A_init[j])
-        printf("h_A[%d] wrong\n", offset + j);
+        printf("h_A[%d] wrong\r\n", offset + j);
 
       if (h_B[offset + j] != B_init[j])
-        printf("h_B[%d] wrong: Got %X, expected %X\n", offset + j, h_B[offset + j], B_init[j]);
+        printf("h_B[%d] wrong: Got %X, expected %X\r\n", offset + j, h_B[offset + j], B_init[j]);
 
       if (h_C[offset + j] != C_init[j])
-        printf("h_C[%d] wrong\n", offset + j);
+        printf("h_C[%d] wrong\r\n", offset + j);
     }
 
     computeGoldMatrixMul(h_C, h_A, h_B, offset, HA, WA, WB);
@@ -120,7 +120,7 @@ int main()
 
   for (i=0; i<WC*HC; i++) {
     if (h_C[i+offset] != RESULT_MUL[i]) {
-      printf("Error at index %d: Got %X, expected %X\n", i + offset, h_C[i+offset], RESULT_MUL[i]);
+      printf("Error at index %d: Got %X, expected %X\r\n", i + offset, h_C[i+offset], RESULT_MUL[i]);
       error++;
     }
   }

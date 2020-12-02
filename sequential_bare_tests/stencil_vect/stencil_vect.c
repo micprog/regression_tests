@@ -54,7 +54,7 @@ void check_stencil_simple(testresult_t *result, void (*start)(), void (*stop)())
 {
   int i,j,k;
   
-  printf("Start stencil simple\n");
+  printf("Start stencil simple\r\n");
 
   for (i=0;i<N+8;i++) {
     for (k=0;k<M+8;k++)
@@ -80,7 +80,7 @@ void check_stencil_simple(testresult_t *result, void (*start)(), void (*stop)())
 
   // check test 0
 #ifdef DEBUG_OUTPUT
-  printf("\nchecksum = %d\n",check_sum);
+  printf("\r\nchecksum = %d\r\n",check_sum);
 #endif
   if (check_sum != CHKSUM) {
     result->errors++;
@@ -91,7 +91,7 @@ void check_stencil_split(testresult_t *result, void (*start)(), void (*stop)())
 {
   int i,j,k;
   
-  printf("Start stencil\n");
+  printf("Start stencil\r\n");
 
   for (i=0;i<N+8;i++) {
     for (k=0;k<M+8;k++)
@@ -117,7 +117,7 @@ void check_stencil_split(testresult_t *result, void (*start)(), void (*stop)())
   
   // check test 1
 #ifdef DEBUG_OUTPUT
-  printf("\nchecksum = %d\n",check_sum);
+  printf("\r\nchecksum = %d\r\n",check_sum);
 #endif
   if (check_sum != CHKSUM) {
     result->errors++;

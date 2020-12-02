@@ -79,7 +79,7 @@ int main() {
       cnt += __builtin_pulp_cnt(lfsr ^ *(uint32_t *)(addr));
       }
     
-  printf("number of errors: %d/%d \n", cnt, cnt2 );
+  printf("number of errors: %d/%d \r\n", cnt, cnt2 );
   return cnt;
 
 }

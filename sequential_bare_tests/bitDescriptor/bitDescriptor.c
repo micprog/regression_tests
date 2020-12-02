@@ -103,7 +103,7 @@ void Process(testresult_t *result, char *Mess, unsigned int *Descr, int Descr_Si
   int Count_Regular;
 
   Count = 0;
-  printf("\n==========Process %s Starting==============\n", Mess);
+  printf("\r\n==========Process %s Starting==============\r\n", Mess);
   reset_timer();
   start_timer();
 #ifdef PROFILE
@@ -115,8 +115,8 @@ void Process(testresult_t *result, char *Mess, unsigned int *Descr, int Descr_Si
 #endif
   stop_timer();
   *cTime += get_time();
-  printf("Nr. cycles: %d\n", get_time());
-  printf("Regular:  %s -> %d actions triggered\n", Mess, Count);
+  printf("Nr. cycles: %d\r\n", get_time());
+  printf("Regular:  %s -> %d actions triggered\r\n", Mess, Count);
   Count_Regular = Count;
 
 #ifndef __riscv__
@@ -126,8 +126,8 @@ void Process(testresult_t *result, char *Mess, unsigned int *Descr, int Descr_Si
   Process_Descriptor_Bis(Descr, Descr_Size, signal);
   stop_timer();
   *asmTime += get_time();
-  printf("Nr. cycles: %d\n", get_time());
-  printf("Optimized:%s -> %d actions triggered\n", Mess, Count);
+  printf("Nr. cycles: %d\r\n", get_time());
+  printf("Optimized:%s -> %d actions triggered\r\n", Mess, Count);
 
   if(Count != Count_Regular) {
     result->errors += 1;
@@ -168,9 +168,9 @@ void check_bit(testresult_t *result, void (*start)(), void (*stop)()) {
     Process(result, "75% 1, 25% 0", Descr8, Descr_Size, &cTime, &asmTime);
     Process(result, "Random", Descr3, Descr_Size, &cTime, &asmTime);
     stop();
-    printf("C version cycles: %d\n", cTime);
-    printf("ASM version cycles: %d\n", asmTime);
+    printf("C version cycles: %d\r\n", cTime);
+    printf("ASM version cycles: %d\r\n", asmTime);
 
-    printf("#Errors: %d\n", g_errors);
+    printf("#Errors: %d\r\n", g_errors);
   }
 }

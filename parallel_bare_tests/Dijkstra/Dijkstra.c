@@ -85,7 +85,7 @@ int main()
   int hc;
 
   if (rt_core_id() == 0)
-    printf("Starting Dijkstra application...\n");
+    printf("Starting Dijkstra application...\r\n");
 
   for(hc = 0; hc < 3; ++hc)
   {
@@ -124,13 +124,13 @@ int main()
 
   for ( i=0; i<NV; i++ ){
     if ( dijkstra_out[i] != dijkstra_ref[i] ) {
-      printf("Result: %d, Expected: %d, Index: %d\n",dijkstra_out[i],dijkstra_ref[i],i);
+      printf("Result: %d, Expected: %d, Index: %d\r\n",dijkstra_out[i],dijkstra_ref[i],i);
       error++;
     }
   }
 
   if (id == 0)
-    printf("...Dijkstra application complete! Errors: %d, Time: %d cycles\n",error,time);
+    printf("...Dijkstra application complete! Errors: %d, Time: %d cycles\r\n",error,time);
 
   // print all performance counters
   perf_print_all();
@@ -236,7 +236,7 @@ void dijkstra_distance (int mind[NV], int ohd[NV][NV] )
         if ( mv != - 1 )
         {
           connected[mv] = 1;
-          //printf ( "  P%d: Connecting node %d.\n", my_id, mv );
+          //printf ( "  P%d: Connecting node %d.\r\n", my_id, mv );
         }
       }
 

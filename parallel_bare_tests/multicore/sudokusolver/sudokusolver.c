@@ -22,7 +22,7 @@ int main()
 
   if (coreid == 0){
 
-    printf("Start sudokusolver\n");
+    printf("Start sudokusolver\r\n");
 
     // store sudoku to solve in grid_init
     for (i=0;i<9;i++){
@@ -59,27 +59,27 @@ int main()
       sudokusolver(grid_solved, solved);
 
       stop_timer();
-      printf("Loop %d cycles: %d\n", k, get_time());
-      //printf("Iteration %d completed\n",k);
+      printf("Loop %d cycles: %d\r\n", k, get_time());
+      //printf("Iteration %d completed\r\n",k);
     }
 
     // print solution
-    printf("Solution:\n");
+    printf("Solution:\r\n");
 
     for (i=0;i<9;i++){
-      printf("\n");
+      printf("\r\n");
       for (j=0;j<9;j++){
         printf("%d ",grid_solved[i*SUDOKUSIZE+j]);
       }
     }
-    printf("\n");
+    printf("\r\n");
 
     // check result!
     for (i=0;i<SUDOKUSIZE;i++) {
       for (k=0;k<SUDOKUSIZE;k++) {
         if (SUDOKUSOLVED[i*SUDOKUSIZE+k] != grid_solved[i*SUDOKUSIZE+k]) {
           error = error + 1;
-          printf("Error occurred at i=%d k=%d; Computed result %d does not match expected result %d\n",i,k,grid_solved[i*SUDOKUSIZE+k],SUDOKUSOLVED[i*SUDOKUSIZE+k]);
+          printf("Error occurred at i=%d k=%d; Computed result %d does not match expected result %d\r\n",i,k,grid_solved[i*SUDOKUSIZE+k],SUDOKUSOLVED[i*SUDOKUSIZE+k]);
         }
       }
     }

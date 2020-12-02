@@ -78,7 +78,7 @@ void check_add(testresult_t *result, void (*start)(), void (*stop)()) {
 
     for(i = 0; i < N_INTERS; i++){
 
-      for(j = 0; j < 500; j++) asm volatile ("nop\n");
+      for(j = 0; j < 500; j++) asm volatile ("nop\r\n");
 
       eu_evt_trig(eu_evt_trig_addr(SW_EVENT_7), mask);
     }
@@ -91,17 +91,17 @@ void check_add(testresult_t *result, void (*start)(), void (*stop)()) {
     // Basic Check
     //-----------------------------------------------------------------
     for(i = 0; i < N_INTERS; i++) {
-      asm volatile ("addi %[act], x0, 1\n"
-                    "addi %[act], %[act], 2\n"
-                    "addi %[act], %[act], 4\n"
-                    "p.elw x0, 0x0(%[clkgate_addr])\n" //eu_evt_wait(); <- evt_read32(ARCHI_EU_DEMUX_ADDR, EU_CORE_EVENT_WAIT);
-                    "sw %[evtMask], 0x0(%[clr_buf])\n" //eu_evt_clr(1 << EU_CORE_EVENT_WAIT)
-                    "addi %[act], %[act], 8\n"
-                    "addi %[act], %[act], 16\n"
-                    "addi %[act], %[act], 32\n"
-                    "addi %[act], %[act], 64\n"
-                    "addi %[act], %[act], 128\n"
-                    "addi %[act], %[act], 256\n"
+      asm volatile ("addi %[act], x0, 1\r\n"
+                    "addi %[act], %[act], 2\r\n"
+                    "addi %[act], %[act], 4\r\n"
+                    "p.elw x0, 0x0(%[clkgate_addr])\r\n" //eu_evt_wait(); <- evt_read32(ARCHI_EU_DEMUX_ADDR, EU_CORE_EVENT_WAIT);
+                    "sw %[evtMask], 0x0(%[clr_buf])\r\n" //eu_evt_clr(1 << EU_CORE_EVENT_WAIT)
+                    "addi %[act], %[act], 8\r\n"
+                    "addi %[act], %[act], 16\r\n"
+                    "addi %[act], %[act], 32\r\n"
+                    "addi %[act], %[act], 64\r\n"
+                    "addi %[act], %[act], 128\r\n"
+                    "addi %[act], %[act], 256\r\n"
                     : [act] "+r" (act)
                     : [clkgate_addr] "r" (CORE_CLKGATE),
                       [clr_buf]      "r" (CLEAR_BUFF),
@@ -109,7 +109,7 @@ void check_add(testresult_t *result, void (*start)(), void (*stop)()) {
 
       if(act != exp) {
         result->errors++;
-        printf("Testing add before and after events: %X, expected %X\n", act, exp);
+        printf("Testing add before and after events: %X, expected %X\r\n", act, exp);
       }
     }
 
@@ -134,9 +134,9 @@ void check_hwloop(testresult_t *result, void (*start)(), void (*stop)()) {
     // Clock Gating and explicit clear buffer
     //-----------------------------------------------------------------
 
-    for(j = 0; j < 400; j++) asm volatile ("nop\n");
+    for(j = 0; j < 400; j++) asm volatile ("nop\r\n");
     for(i = 0; i < N_INTERS; i++) {
-      for(j = 0; j < i*5+1000; j++) asm volatile ("nop\n");
+      for(j = 0; j < i*5+1000; j++) asm volatile ("nop\r\n");
 
       eu_evt_trig(eu_evt_trig_addr(SW_EVENT_7), mask);
     }
@@ -145,9 +145,9 @@ void check_hwloop(testresult_t *result, void (*start)(), void (*stop)()) {
     // Clock Gating and implicit clear buffer
     //-----------------------------------------------------------------
 
-    for(j = 0; j < 400; j++) asm volatile ("nop\n");
+    for(j = 0; j < 400; j++) asm volatile ("nop\r\n");
     for(i = 0; i < N_INTERS; i++) {
-      for(j = 0; j < i*5+1000; j++) asm volatile ("nop\n");
+      for(j = 0; j < i*5+1000; j++) asm volatile ("nop\r\n");
 
       eu_evt_trig(eu_evt_trig_addr(SW_EVENT_7), mask);
     }
@@ -165,17 +165,17 @@ void check_hwloop(testresult_t *result, void (*start)(), void (*stop)()) {
 
     eu_evt_maskSet(1 << SW_EVENT_7);
     act = 0;
-    asm volatile ("lp.counti x0, %[N]\n"
-                  "lp.starti x0, startE\n"
-                  "lp.endi   x0, endE\n"
-                  "startE: addi %[act], %[act], 1\n"
-                  "addi %[act], %[act], 2\n"
-                  "addi %[act], %[act], 3\n"
-                  "p.elw x0, 0x0(%[clkgate_addr])\n"
-                  "sw %[evtMask], 0x0(%[clr_buf])\n"
-                  "addi %[act], %[act], 4\n"
-                  "addi %[act], %[act], 5\n"
-                  "endE: addi %[act], %[act], 6\n"
+    asm volatile ("lp.counti x0, %[N]\r\n"
+                  "lp.starti x0, startE\r\n"
+                  "lp.endi   x0, endE\r\n"
+                  "startE: addi %[act], %[act], 1\r\n"
+                  "addi %[act], %[act], 2\r\n"
+                  "addi %[act], %[act], 3\r\n"
+                  "p.elw x0, 0x0(%[clkgate_addr])\r\n"
+                  "sw %[evtMask], 0x0(%[clr_buf])\r\n"
+                  "addi %[act], %[act], 4\r\n"
+                  "addi %[act], %[act], 5\r\n"
+                  "endE: addi %[act], %[act], 6\r\n"
                   : [act] "+r" (act)
                   : [N]            "i" (N_INTERS),
                     [clkgate_addr] "r" (CORE_CLKGATE),
@@ -186,7 +186,7 @@ void check_hwloop(testresult_t *result, void (*start)(), void (*stop)()) {
 
     if(act != exp) {
       result->errors++;
-      printf("Testing hwloop with clock gating and explicit clear buffer: %X, expected %X\n", act, exp);
+      printf("Testing hwloop with clock gating and explicit clear buffer: %X, expected %X\r\n", act, exp);
     }
 
     //-----------------------------------------------------------------
@@ -194,21 +194,21 @@ void check_hwloop(testresult_t *result, void (*start)(), void (*stop)()) {
     //-----------------------------------------------------------------
 
     act = 0;
-    asm volatile ("lp.counti x0, %[N]\n"
-                  "lp.starti x0, startN\n"
-                  "lp.endi   x0, endN\n"
-                  "startN: addi %[act], %[act], 1\n"
-                  "addi %[act], %[act], 2\n"
-                  "addi %[act], %[act], 3\n"
-                  "addi %[act], %[act], 4\n"
-                  "addi %[act], %[act], 5\n"
-                  "endN: addi %[act], %[act], 6\n"
+    asm volatile ("lp.counti x0, %[N]\r\n"
+                  "lp.starti x0, startN\r\n"
+                  "lp.endi   x0, endN\r\n"
+                  "startN: addi %[act], %[act], 1\r\n"
+                  "addi %[act], %[act], 2\r\n"
+                  "addi %[act], %[act], 3\r\n"
+                  "addi %[act], %[act], 4\r\n"
+                  "addi %[act], %[act], 5\r\n"
+                  "endN: addi %[act], %[act], 6\r\n"
                   : [act] "+r" (act)
                   : [N]   "i" (N_INTERS));
 
     if(act != exp) {
       result->errors++;
-      printf("Testing normal hwloop: %X, expected %X\n", act, exp);
+      printf("Testing normal hwloop: %X, expected %X\r\n", act, exp);
     }
 
     //-----------------------------------------------------------------
@@ -217,16 +217,16 @@ void check_hwloop(testresult_t *result, void (*start)(), void (*stop)()) {
 
     eu_evt_maskSet(1 << SW_EVENT_7);
     act = 0;
-    asm volatile ("lp.counti x0, %[N]\n"
-                  "lp.starti x0, startI\n"
-                  "lp.endi   x0, endI\n"
-                  "startI: addi %[act], %[act], 1\n"
-                  "addi %[act], %[act], 2\n"
-                  "addi %[act], %[act], 3\n"
-                  "p.elw x0, 0x0(%[clkgate_addr])\n"
-                  "addi %[act], %[act], 4\n"
-                  "addi %[act], %[act], 5\n"
-                  "endI: addi %[act], %[act], 6\n"
+    asm volatile ("lp.counti x0, %[N]\r\n"
+                  "lp.starti x0, startI\r\n"
+                  "lp.endi   x0, endI\r\n"
+                  "startI: addi %[act], %[act], 1\r\n"
+                  "addi %[act], %[act], 2\r\n"
+                  "addi %[act], %[act], 3\r\n"
+                  "p.elw x0, 0x0(%[clkgate_addr])\r\n"
+                  "addi %[act], %[act], 4\r\n"
+                  "addi %[act], %[act], 5\r\n"
+                  "endI: addi %[act], %[act], 6\r\n"
                   : [act] "+r" (act)
                   : [N]            "i" (N_INTERS),
                     [clkgate_addr] "r" (CORE_CLKGATE_CLRBUFF),
@@ -237,7 +237,7 @@ void check_hwloop(testresult_t *result, void (*start)(), void (*stop)()) {
 
     if(act != exp) {
       result->errors++;
-      printf("Testing hwloop with clock gating and implicit clear buffer: %X, expected %X\n", act, exp);
+      printf("Testing hwloop with clock gating and implicit clear buffer: %X, expected %X\r\n", act, exp);
     }
 
   }
@@ -265,17 +265,17 @@ void check_prod_cons(testresult_t *result, void (*start)(), void (*stop)()) {
       eu_evt_trig(eu_evt_trig_addr(_STOP_READY), mask1);
 
       //WAIT _STOP_READ
-      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\n"
+      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\r\n"
                      :
                      : [clkgate_addr] "r" (CORE_CLKGATE_CLRBUFF));
       //delay loop
-      for(j = 0; j < 500; j++) asm volatile ("nop\n");
+      for(j = 0; j < 500; j++) asm volatile ("nop\r\n");
 
       _data = 2*i;
 
       eu_evt_trig(eu_evt_trig_addr(_DATA_READY), mask1);
       //WAIT _DATA_READ
-      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\n"
+      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\r\n"
                      :
                      : [clkgate_addr] "r" (CORE_CLKGATE_CLRBUFF));
 
@@ -285,7 +285,7 @@ void check_prod_cons(testresult_t *result, void (*start)(), void (*stop)()) {
     eu_evt_trig(eu_evt_trig_addr(_STOP_READY), mask1);
 
     //WAIT _STOP_READ
-    asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\n"
+    asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\r\n"
                      :
                      : [clkgate_addr] "r" (CORE_CLKGATE_CLRBUFF));
 
@@ -304,7 +304,7 @@ void check_prod_cons(testresult_t *result, void (*start)(), void (*stop)()) {
     while(1){
 
       //WAIT _STOP_READY
-      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\n"
+      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\r\n"
                      :
                      : [clkgate_addr] "r" (CORE_CLKGATE_CLRBUFF));
 
@@ -314,10 +314,10 @@ void check_prod_cons(testresult_t *result, void (*start)(), void (*stop)()) {
 
       if(stop_read) break;
 
-      if(i>=10) { printf("Error! Data out of bounds (i = %d) \n",i); break; }
+      if(i>=10) { printf("Error! Data out of bounds (i = %d) \r\n",i); break; }
 
       //WAIT _DATA_READY
-      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\n"
+      asm volatile ("p.elw x0, 0x0(%[clkgate_addr])\r\n"
                      :
                      : [clkgate_addr] "r" (CORE_CLKGATE_CLRBUFF));
 
@@ -335,14 +335,14 @@ void check_prod_cons(testresult_t *result, void (*start)(), void (*stop)()) {
 
     if(i != N_INTERS) {
       result->errors++;
-      printf("Core 1 did not receives the expected number of data\n");
+      printf("Core 1 did not receives the expected number of data\r\n");
     }
 
 
     for(j = 0; j < i; j++){
       if(datas[j] != j*2) {
        result->errors++;
-       printf("datas[%u] is %u, expected %u\n",j,datas[j],j*2);
+       printf("datas[%u] is %u, expected %u\r\n",j,datas[j],j*2);
       }
     }
 

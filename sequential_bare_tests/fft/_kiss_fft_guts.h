@@ -57,7 +57,7 @@ struct __attribute__((__packed__)) kiss_fft_state{
 #if defined(CHECK_OVERFLOW)
 #  define CHECK_OVERFLOW_OP(a,op,b)  \
 	if ( (SAMPPROD)(a) op (SAMPPROD)(b) > SAMP_MAX || (SAMPPROD)(a) op (SAMPPROD)(b) < SAMP_MIN ) { \
-		fprintf(stderr,"WARNING:overflow @ " __FILE__ "(%d): (%d " #op" %d) = %ld\n",__LINE__,(a),(b),(SAMPPROD)(a) op (SAMPPROD)(b) );  }
+		fprintf(stderr,"WARNING:overflow @ " __FILE__ "(%d): (%d " #op" %d) = %ld\r\n",__LINE__,(a),(b),(SAMPPROD)(a) op (SAMPPROD)(b) );  }
 #endif
 
 
@@ -147,7 +147,7 @@ struct __attribute__((__packed__)) kiss_fft_state{
 
 /* a debugging function */
 #define pcpx(c)\
-    fprintf(stderr,"%g + %gi\n",(double)((c)->r),(double)((c)->i) )
+    fprintf(stderr,"%g + %gi\r\n",(double)((c)->r),(double)((c)->i) )
 
 
 #ifdef KISS_FFT_USE_ALLOCA

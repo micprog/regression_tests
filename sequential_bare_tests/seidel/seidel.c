@@ -69,5 +69,5 @@ void computeGold(volatile int T, volatile float a[N][N]){
     }
   }
   stop_timer();
-  printf("Cycles: %d\n", get_time());
+  printf("Cycles: %d\r\n", get_time());
 }

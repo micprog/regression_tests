@@ -55,7 +55,7 @@ void check_fibonacci(testresult_t *result, void (*start)(), void (*stop)())
   int i=0,j, c;
   int n=N;
   
-  printf("Start fibonacci\n");
+  printf("Start fibonacci\r\n");
 
   start();
   fib(array, n);
@@ -64,7 +64,7 @@ void check_fibonacci(testresult_t *result, void (*start)(), void (*stop)())
 
   for (i=0;i<n;i++) {
     if (RESULT_FIB[i] != array[i]) {
-      printf("expected: %d, actual: %d\n",RESULT_FIB[i],array[i]);
+      printf("expected: %d, actual: %d\r\n",RESULT_FIB[i],array[i]);
       result->errors++;
     }
   }

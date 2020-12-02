@@ -23,28 +23,28 @@ parser.add_argument("--riscv", dest="riscv", default=False, action="store_true",
 args = parser.parse_args()
 
 def write_hex8_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%02X%02X%02X%02X,\n' % (v[0] & 0xFF, v[1] & 0xFF, v[2] & 0xFF, v[3] & 0xFF))
-    f.write('};\n\n')
+        f.write('0x%02X%02X%02X%02X,\r\n' % (v[0] & 0xFF, v[1] & 0xFF, v[2] & 0xFF, v[3] & 0xFF))
+    f.write('};\r\n\r\n')
     return
 
 def write_hex16_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%04X%04X,\n' % (v[0] & 0xFFFF, v[1] & 0xFFFF))
-    f.write('};\n\n')
+        f.write('0x%04X%04X,\r\n' % (v[0] & 0xFFFF, v[1] & 0xFFFF))
+    f.write('};\r\n\r\n')
     return
 
 def write_hex32_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%08X,\n' % (v & 0xFFFFFFFF))
-    f.write('};\n\n')
+        f.write('0x%08X,\r\n' % (v & 0xFFFFFFFF))
+    f.write('};\r\n\r\n')
     return
 
 def write_define(f, name,val):
-    f.write('#define %s %d\n\n' % (name,val))
+    f.write('#define %s %d\r\n\r\n' % (name,val))
     return
 
 def bit_reverse(input, length, radix):
@@ -62,9 +62,9 @@ def bit_reverse(input, length, radix):
 
 def brev_encode(input, length, radix, iteration, instr_str):
     radix = int(math.floor(math.log(radix,2))) - 1
-    instr_str += "\nasm volatile (\"p.bitrev %%[c], %%[a], %s, %s\\n\"\n"%(32-length, radix)
-    instr_str += "             : [c] \"+r\" (tmp_result[%s])\n"%(i)
-    instr_str += "             : [a] \"r\"  (cplxbitrev_opA_radix%s[%s]));\n"%(2**(radix+1), i)
+    instr_str += "\r\nasm volatile (\"p.bitrev %%[c], %%[a], %s, %s\\r\n\"\r\n"%(32-length, radix)
+    instr_str += "             : [c] \"+r\" (tmp_result[%s])\r\n"%(i)
+    instr_str += "             : [a] \"r\"  (cplxbitrev_opA_radix%s[%s]));\r\n"%(2**(radix+1), i)
     return instr_str
 
 def write_test_in_file(inst_str, radix):
@@ -72,13 +72,13 @@ def write_test_in_file(inst_str, radix):
     file_lines = []
     file = open(file_loc, "w")
 
-    str_ifndef = '#ifndef CHECK_BIT_REVERSE_RAD%s\n'%(str(2**radix))
-    str_define = '#define CHECK_BIT_REVERSE_RAD%s\n'%(str(2**radix))
+    str_ifndef = '#ifndef CHECK_BIT_REVERSE_RAD%s\r\n'%(str(2**radix))
+    str_define = '#define CHECK_BIT_REVERSE_RAD%s\r\n'%(str(2**radix))
     file_lines.append(str_ifndef)
     file_lines.append(str_define)
-    func_str = inst_str + "\n\n"
+    func_str = inst_str + "\r\n\r\n"
     file_lines.append(func_str)
-    file_lines.append("#endif\n")
+    file_lines.append("#endif\r\n")
     file.writelines(file_lines)
     file.close()
 

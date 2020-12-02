@@ -118,8 +118,8 @@ void check_ld_postin_imm(void) {
     unsigned int ld = 0;
     unsigned int ld1 = 0;
 
-    asm volatile ("p.lw  %[ld],  0x4(%[c]!)\n"
-                  "p.lw  %[ld1], 0x4(%[c]!)\n"
+    asm volatile ("p.lw  %[ld],  0x4(%[c]!)\r\n"
+                  "p.lw  %[ld1], 0x4(%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer));
 
     test_check("p.lw  rd, I(rs1!), load nr. 1", ld,            g_ldpre_imm_c[2*i]);
@@ -135,8 +135,8 @@ void check_ld_postin_imm(void) {
     unsigned int ld = 0;
     unsigned int ld1 = 0;
 
-    asm volatile ("p.lhu %[ld],  0x4(%[c]!)\n"
-                  "p.lhu %[ld1], 0x4(%[c]!)\n"
+    asm volatile ("p.lhu %[ld],  0x4(%[c]!)\r\n"
+                  "p.lhu %[ld1], 0x4(%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer));
 
     test_check("p.lhu rd, I(rs1!), load nr. 1", ld,            g_ldpre_imm_c[2*i]   & 0xFFFF);
@@ -152,8 +152,8 @@ void check_ld_postin_imm(void) {
     short ld = 0;
     short ld1 = 0;
 
-    asm volatile ("p.lh  %[ld],  0x4(%[c]!)\n"
-                  "p.lh  %[ld1], 0x4(%[c]!)\n"
+    asm volatile ("p.lh  %[ld],  0x4(%[c]!)\r\n"
+                  "p.lh  %[ld1], 0x4(%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer));
 
     test_check("p.lh  rd, I(rs1!), load nr. 1", ld,     (short)(g_ldpre_imm_c[2*i]));
@@ -169,8 +169,8 @@ void check_ld_postin_imm(void) {
     unsigned char ld = 0;
     unsigned char ld1 = 0;
 
-    asm volatile ("p.lbu %[ld], 0x4(%[c]!)\n"
-                  "p.lbu %[ld1], 0x4(%[c]!)\n"
+    asm volatile ("p.lbu %[ld], 0x4(%[c]!)\r\n"
+                  "p.lbu %[ld1], 0x4(%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer));
 
     test_check("p.lbu rd, I(rs1!), load nr. 1", ld,             g_ldpre_imm_c[2*i]   & 0xFF);
@@ -186,8 +186,8 @@ void check_ld_postin_imm(void) {
     char ld = 0;
     char ld1 = 0;
 
-    asm volatile ("p.lb  %[ld],  0x4(%[c]!)\n"
-                  "p.lb  %[ld1], 0x4(%[c]!)\n"
+    asm volatile ("p.lb  %[ld],  0x4(%[c]!)\r\n"
+                  "p.lb  %[ld1], 0x4(%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer));
 
     test_check("p.lb  rd, I(rs1!), load nr. 1", ld,      (char)(g_ldpre_imm_c[2*i]));
@@ -210,8 +210,8 @@ void check_ld_reg(void) {
     unsigned int ld = 0;
     unsigned int ld1 = 0;
 
-    asm volatile ("p.lw  %[ld], x0(%[c])\n"
-                  "p.lw  %[ld1], %[off](%[c])\n"
+    asm volatile ("p.lw  %[ld], x0(%[c])\r\n"
+                  "p.lw  %[ld1], %[off](%[c])\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1)
                   : [c] "r" (pointer), [off] "r" (g_ld_reg_off[i]));
 
@@ -227,8 +227,8 @@ void check_ld_reg(void) {
     unsigned short ld = 0;
     unsigned short ld1 = 0;
 
-    asm volatile ("p.lhu %[ld], x0(%[c])\n"
-                  "p.lhu %[ld1], %[off](%[c])\n"
+    asm volatile ("p.lhu %[ld], x0(%[c])\r\n"
+                  "p.lhu %[ld1], %[off](%[c])\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1)
                   : [c] "r" (pointer), [off] "r" (g_ld_reg_off[i]));
 
@@ -244,8 +244,8 @@ void check_ld_reg(void) {
     short ld = 0;
     short ld1 = 0;
 
-    asm volatile ("p.lh  %[ld], x0(%[c])\n"
-                  "p.lh  %[ld1], %[off](%[c])\n"
+    asm volatile ("p.lh  %[ld], x0(%[c])\r\n"
+                  "p.lh  %[ld1], %[off](%[c])\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1)
                   : [c] "r" (pointer), [off] "r" (g_ld_reg_off[i]));
 
@@ -261,8 +261,8 @@ void check_ld_reg(void) {
     unsigned char ld = 0;
     unsigned char ld1 = 0;
 
-    asm volatile ("p.lbu %[ld], x0(%[c])\n"
-                  "p.lbu %[ld1], %[off](%[c])\n"
+    asm volatile ("p.lbu %[ld], x0(%[c])\r\n"
+                  "p.lbu %[ld1], %[off](%[c])\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1)
                   : [c] "r" (pointer), [off] "r" (g_ld_reg_off[i]));
 
@@ -278,8 +278,8 @@ void check_ld_reg(void) {
     char ld = 0;
     char ld1 = 0;
 
-    asm volatile ("p.lb  %[ld], x0(%[c])\n"
-                  "p.lb  %[ld1], %[off](%[c])\n"
+    asm volatile ("p.lb  %[ld], x0(%[c])\r\n"
+                  "p.lb  %[ld1], %[off](%[c])\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1)
                   : [c] "r" (pointer), [off] "r" (g_ld_reg_off[i]));
 
@@ -302,8 +302,8 @@ void check_ld_postin_reg(void) {
     unsigned int ld = 0;
     unsigned int ld1 = 0;
 
-    asm volatile ("p.lw  %[ld],  %[off](%[c]!)\n"
-                  "p.lw  %[ld1], %[off](%[c]!)\n"
+    asm volatile ("p.lw  %[ld],  %[off](%[c]!)\r\n"
+                  "p.lw  %[ld1], %[off](%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer)
                   : [off] "r" (g_ldpre_reg_off[i]));
 
@@ -320,8 +320,8 @@ void check_ld_postin_reg(void) {
     unsigned int ld = 0;
     unsigned int ld1 = 0;
 
-    asm volatile ("p.lhu %[ld],  %[off](%[c]!)\n"
-                  "p.lhu %[ld1], %[off](%[c]!)\n"
+    asm volatile ("p.lhu %[ld],  %[off](%[c]!)\r\n"
+                  "p.lhu %[ld1], %[off](%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer)
                   : [off] "r" (g_ldpre_reg_off[i]));
 
@@ -338,8 +338,8 @@ void check_ld_postin_reg(void) {
     short ld = 0;
     short ld1 = 0;
 
-    asm volatile ("p.lh  %[ld],  %[off](%[c]!)\n"
-                  "p.lh  %[ld1], %[off](%[c]!)\n"
+    asm volatile ("p.lh  %[ld],  %[off](%[c]!)\r\n"
+                  "p.lh  %[ld1], %[off](%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer)
                   : [off] "r" (g_ldpre_reg_off[i]));
 
@@ -356,8 +356,8 @@ void check_ld_postin_reg(void) {
     unsigned char ld = 0;
     unsigned char ld1 = 0;
 
-    asm volatile ("p.lbu %[ld],  %[off](%[c]!)\n"
-                  "p.lbu %[ld1], %[off](%[c]!)\n"
+    asm volatile ("p.lbu %[ld],  %[off](%[c]!)\r\n"
+                  "p.lbu %[ld1], %[off](%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer)
                   : [off] "r" (g_ldpre_reg_off[i]));
 
@@ -374,8 +374,8 @@ void check_ld_postin_reg(void) {
     char ld = 0;
     char ld1 = 0;
 
-    asm volatile ("p.lb  %[ld],  %[off](%[c]!)\n"
-                  "p.lb  %[ld1], %[off](%[c]!)\n"
+    asm volatile ("p.lb  %[ld],  %[off](%[c]!)\r\n"
+                  "p.lb  %[ld1], %[off](%[c]!)\r\n"
                   : [ld] "+r" (ld), [ld1] "+r" (ld1), [c] "+r" (pointer)
                   : [off] "r" (g_ldpre_reg_off[i]));
 
@@ -407,8 +407,8 @@ void check_st_postin_imm(void) {
   for(i = 0; i < (sizeof(g_stpre_imm_st)/8); i++) {
     unsigned int pointer = (unsigned int)&g_stpre_imm_st[2*i];
 
-    asm volatile ("p.sw %[c],  0x4(%[st]!)\n"
-                  "p.sw %[c1], 0x4(%[st]!)\n"
+    asm volatile ("p.sw %[c],  0x4(%[st]!)\r\n"
+                  "p.sw %[c1], 0x4(%[st]!)\r\n"
                   : [c] "+r" (g_stpre_imm_c[2*i]), [c1] "+r" (g_stpre_imm_c[2*i+1]), [st] "+r" (pointer));
 
     test_check("p.sw rs1, I(rs2!), store nr. 1", g_stpre_imm_st[2*i],   g_stpre_imm_c[2*i]);
@@ -425,8 +425,8 @@ void check_st_postin_imm(void) {
     g_stpre_imm_st[2*i] = 0;
     g_stpre_imm_st[2*i+1] = 0;
 
-    asm volatile ("p.sh %[c],  0x4(%[st]!)\n"
-                  "p.sh %[c1], 0x4(%[st]!)\n"
+    asm volatile ("p.sh %[c],  0x4(%[st]!)\r\n"
+                  "p.sh %[c1], 0x4(%[st]!)\r\n"
                   : [c] "+r" (g_stpre_imm_c[2*i]), [c1] "+r" (g_stpre_imm_c[2*i+1]), [st] "+r" (pointer));
 
     test_check("p.sh rs1, I(rs2!), store nr. 1", g_stpre_imm_st[2*i],   g_stpre_imm_c[2*i]   & 0xFFFF);
@@ -443,8 +443,8 @@ void check_st_postin_imm(void) {
 
     g_stpre_imm_st[2*i] = 0;
 
-    asm volatile ("p.sh %[c],  0x2(%[st]!)\n"
-                  "p.sh %[c1], 0x2(%[st]!)\n"
+    asm volatile ("p.sh %[c],  0x2(%[st]!)\r\n"
+                  "p.sh %[c1], 0x2(%[st]!)\r\n"
                   : [c] "+r" (g_stpre_imm_c[2*i]), [c1] "+r" (g_stpre_imm_c[2*i+1]), [st] "+r" (pointer));
 
     test_check("p.sh rs1, I(rs2!)", g_stpre_imm_st[2*i], (g_stpre_imm_c[2*i] & 0xFFFF) | ((g_stpre_imm_c[2*i+1] & 0xFFFF) << 16));
@@ -460,8 +460,8 @@ void check_st_postin_imm(void) {
     g_stpre_imm_st[2*i] = 0;
     g_stpre_imm_st[2*i+1] = 0;
 
-    asm volatile ("p.sb %[c],  0x4(%[st]!)\n"
-                  "p.sb %[c1], 0x4(%[st]!)\n"
+    asm volatile ("p.sb %[c],  0x4(%[st]!)\r\n"
+                  "p.sb %[c1], 0x4(%[st]!)\r\n"
                   : [c] "+r" (g_stpre_imm_c[2*i]), [c1] "+r" (g_stpre_imm_c[2*i+1]), [st] "+r" (pointer));
 
     test_check("p.sb rs1, I(rs2!), store nr. 1", g_stpre_imm_st[2*i],   g_stpre_imm_c[2*i]   & 0xFF);
@@ -478,10 +478,10 @@ void check_st_postin_imm(void) {
 
     g_stpre_imm_st[2*i] = 0;
 
-    asm volatile ("p.sb %[c],  0x1(%[st]!)\n"
-                  "p.sb %[c1], 0x1(%[st]!)\n"
-                  "p.sb %[c],  0x1(%[st]!)\n"
-                  "p.sb %[c1], 0x1(%[st]!)\n"
+    asm volatile ("p.sb %[c],  0x1(%[st]!)\r\n"
+                  "p.sb %[c1], 0x1(%[st]!)\r\n"
+                  "p.sb %[c],  0x1(%[st]!)\r\n"
+                  "p.sb %[c1], 0x1(%[st]!)\r\n"
                   : [c] "+r" (g_stpre_imm_c[2*i]), [c1] "+r" (g_stpre_imm_c[2*i+1]), [st] "+r" (pointer));
 
     test_check("p.sb rs1, I(rs2!)", g_stpre_imm_st[2*i], (g_stpre_imm_c[2*i] & 0xFF) | ((g_stpre_imm_c[2*i+1] & 0xFF) << 8) | ((g_stpre_imm_c[2*i] & 0xFF) << 16) | ((g_stpre_imm_c[2*i+1] & 0xFF) << 24));
@@ -504,8 +504,8 @@ void check_st_reg(void) {
     g_st_reg_st[2*i] = 0;
     g_st_reg_st[2*i+1] = 0;
 
-    asm volatile ("p.sw %[c],      x0(%[st])\n"
-                  "p.sw %[c1], %[off](%[st])\n"
+    asm volatile ("p.sw %[c],      x0(%[st])\r\n"
+                  "p.sw %[c1], %[off](%[st])\r\n"
                   : [st]  "+r"  (pointer),
                     [c]   "+r" (g_st_reg_c[2*i]),
                     [c1]  "+r" (g_st_reg_c[2*i+1]),
@@ -524,8 +524,8 @@ void check_st_reg(void) {
     g_st_reg_st[2*i] = 0;
     g_st_reg_st[2*i+1] = 0;
 
-    asm volatile ("p.sh %[c],      x0(%[st])\n"
-                  "p.sh %[c1], %[off](%[st])\n"
+    asm volatile ("p.sh %[c],      x0(%[st])\r\n"
+                  "p.sh %[c1], %[off](%[st])\r\n"
                   : : [st]  "r"  (pointer),
                       [c]   "r" (g_st_reg_c[2*i]),
                       [c1]  "r" (g_st_reg_c[2*i+1]),
@@ -544,8 +544,8 @@ void check_st_reg(void) {
     g_st_reg_st[2*i] = 0;
     g_st_reg_st[2*i+1] = 0;
 
-    asm volatile ("p.sb %[c],      x0(%[st])\n"
-                  "p.sb %[c1], %[off](%[st])\n"
+    asm volatile ("p.sb %[c],      x0(%[st])\r\n"
+                  "p.sb %[c1], %[off](%[st])\r\n"
                   : : [st]  "r" (pointer),
                       [c]   "r" (g_st_reg_c[2*i]),
                       [c1]  "r" (g_st_reg_c[2*i+1]),
@@ -571,8 +571,8 @@ void check_st_postin_reg(void) {
     g_st_reg_st[2*i] = 0;
     g_st_reg_st[2*i+1] = 0;
 
-    asm volatile ("p.sw %[c],  %[off](%[st]!)\n"
-                  "p.sw %[c1],     x0(%[st]!)\n"
+    asm volatile ("p.sw %[c],  %[off](%[st]!)\r\n"
+                  "p.sw %[c1],     x0(%[st]!)\r\n"
                   : [st]  "+&r" (pointer)
                   : [c]   "r"   (g_st_reg_c[2*i]),
                     [c1]  "r"   (g_st_reg_c[2*i+1]),
@@ -592,8 +592,8 @@ void check_st_postin_reg(void) {
     g_st_reg_st[2*i] = 0;
     g_st_reg_st[2*i+1] = 0;
 
-    asm volatile ("nop;" "p.sh %[c],  %[off](%[st]!)\n"
-                  "p.sh %[c1],     x0(%[st]!)\n"
+    asm volatile ("nop;" "p.sh %[c],  %[off](%[st]!)\r\n"
+                  "p.sh %[c1],     x0(%[st]!)\r\n"
                   : [st]  "+&r" (pointer)
                   : [c]   "r"   (g_st_reg_c[2*i]),
                     [c1]  "r"   (g_st_reg_c[2*i+1]),
@@ -613,8 +613,8 @@ void check_st_postin_reg(void) {
     g_st_reg_st[2*i] = 0;
     g_st_reg_st[2*i+1] = 0;
 
-    asm volatile ("nop;" "p.sb %[c],  %[off](%[st]!)\n"
-                  "p.sb %[c1],     x0(%[st]!)\n"
+    asm volatile ("nop;" "p.sb %[c],  %[off](%[st]!)\r\n"
+                  "p.sb %[c1],     x0(%[st]!)\r\n"
                   : [st]  "+&r" (pointer)
                   : [c]   "r"   (g_st_reg_c[2*i]),
                     [c1]  "r"   (g_st_reg_c[2*i+1]),

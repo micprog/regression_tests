@@ -73,9 +73,9 @@ static inline void hal_hyper_flash_ext_addr_set(unsigned int value)
 /*
   PLP_BOOT_CODE __attribute__((constructor)) void plp_hyper_ip_init()
   {
-  plp_trace(RT_TRACE_INIT, "Hyper IP driver initialization\n");
+  plp_trace(RT_TRACE_INIT, "Hyper IP driver initialization\r\n");
 
-  plp_trace(RT_TRACE_INIT, "Hyper driver initialization done\n");
+  plp_trace(RT_TRACE_INIT, "Hyper driver initialization done\r\n");
   }
 */
 

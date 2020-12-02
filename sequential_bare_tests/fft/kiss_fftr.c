@@ -34,7 +34,7 @@ kiss_fftr_cfg kiss_fftr_alloc(int nfft,int inverse_fft,void * mem,size_t * lenme
     size_t subsize, memneeded;
 
     if (nfft & 1) {
-        printf("Real FFT optimization must be even.\n");
+        printf("Real FFT optimization must be even.\r\n");
         return NULL;
     }
     nfft >>= 1;
@@ -76,7 +76,7 @@ void kiss_fftr(kiss_fftr_cfg st,const kiss_fft_scalar *timedata,kiss_fft_cpx *fr
     kiss_fft_cpx fpnk,fpk,f1k,f2k,tw,tdc;
 
     if ( st->substate->inverse) {
-        printf("kiss fft usage error: improper alloc\n");
+        printf("kiss fft usage error: improper alloc\r\n");
         exit(1);
     }
 
@@ -131,7 +131,7 @@ void kiss_fftri(kiss_fftr_cfg st,const kiss_fft_cpx *freqdata,kiss_fft_scalar *t
     int k, ncfft;
 
     if (st->substate->inverse == 0) {
-        printf ("kiss fft usage error: improper alloc\n");
+        printf ("kiss fft usage error: improper alloc\r\n");
         exit (1);
     }
 

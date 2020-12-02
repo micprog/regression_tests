@@ -42,27 +42,27 @@ int main() {
         tx_buffer[i] = 0xafff0000+i;
     } 
     hyper_addr = 0;
-    printf("hyper_addr: %d \n", hyper_addr);
+    printf("hyper_addr: %d \r\n", hyper_addr);
     id1=udma_hyper_id_alloc();
     udma_hyper_dwrite((BUFFER_SIZE*4),(unsigned int) hyper_addr, (unsigned int)tx_buffer, 128,id1);
-    printf("BUSY: %d ID:%d \n", udma_hyper_busy(id1), id1);
+    printf("BUSY: %d ID:%d \r\n", udma_hyper_busy(id1), id1);
 
     id2=udma_hyper_id_alloc();
     udma_hyper_dread((BUFFER_SIZE*4),(unsigned int) hyper_addr, (unsigned int)rx_buffer, 128,id2);
-    printf("BUSY: %d, ID:%d \n", udma_hyper_busy(id2),id2);
+    printf("BUSY: %d, ID:%d \r\n", udma_hyper_busy(id2),id2);
     udma_hyper_wait(id2);
 
     for (int i=0; i< BUFFER_SIZE; i++)
      {      
-       printf("rx_buffer[%d] = %x, expectedf: %x \n", i, rx_buffer[i], tx_buffer[i]);
+       printf("rx_buffer[%d] = %x, expectedf: %x \r\n", i, rx_buffer[i], tx_buffer[i]);
        error += rx_buffer[i] ^ tx_buffer[i];
    
       }
 
-if(error!=0) printf("error \n");
-else printf("ok\n");
+if(error!=0) printf("error \r\n");
+else printf("ok\r\n");
 
-printf("Fin. \n");
+printf("Fin. \r\n");
 return error;
   
     

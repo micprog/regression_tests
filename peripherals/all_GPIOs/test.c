@@ -185,13 +185,13 @@ int main()
   uint32_t val_rd1;
   uint32_t gpio_val;
 
-  printf("[%d, %d] Start test\n",  get_cluster_id(), get_core_id());
+  printf("[%d, %d] Start test\r\n",  get_cluster_id(), get_core_id());
 
-  printf("GPIO[i+16] driven by GPIO[i] in Hardware \n");
+  printf("GPIO[i+16] driven by GPIO[i] in Hardware \r\n");
 
-  printf("[PRE-TEST] errors = %0d\n",error);
+  printf("[PRE-TEST] errors = %0d\r\n",error);
   
-  printf("Set GPIOs[31:16] as input, the remaining as output\n");
+  printf("Set GPIOs[31:16] as input, the remaining as output\r\n");
   address = ARCHI_GPIO_ADDR + GPIO_PADDIR_OFFSET;
   val_wr = 0x0000FFFF;
   pulp_write32(address, val_wr);
@@ -199,30 +199,30 @@ int main()
     
     
 
-  printf("Setting first 16 GPIOS outputs=1\n");
+  printf("Setting first 16 GPIOS outputs=1\r\n");
   address = ARCHI_GPIO_ADDR + GPIO_PADOUT_OFFSET;
   val_wr = pulp_read32(address);
   val_wr = 0x0000FFFF;
   pulp_write32(address, val_wr);
   while(pulp_read32(address) != val_wr);
 
-  printf("Enable clock to allow sampling for GPIOs[31:16]\n");
+  printf("Enable clock to allow sampling for GPIOs[31:16]\r\n");
   address = ARCHI_GPIO_ADDR + GPIO_GPIOEN_OFFSET;
   val_wr = 0xFFFF0000;
   pulp_write32(address, val_wr);
   while(pulp_read32(address) != val_wr);
 
-  printf("Reading Input and Output register\n");
+  printf("Reading Input and Output register\r\n");
   address = ARCHI_GPIO_ADDR + GPIO_PADIN_OFFSET;
   val_rd = pulp_read32(address);
-  printf("gpio_in  reg value = %08x\n", val_rd); // gpio_val);
+  printf("gpio_in  reg value = %08x\r\n", val_rd); // gpio_val);
   address = ARCHI_GPIO_ADDR + GPIO_PADOUT_OFFSET;
   val_rd1 = pulp_read32(address);
-  printf("gpio_out reg value = %08x\n", val_rd1);
-  printf("expected gpio_in values = %08x\n", (val_rd1 << 16));
+  printf("gpio_out reg value = %08x\r\n", val_rd1);
+  printf("expected gpio_in values = %08x\r\n", (val_rd1 << 16));
   error = val_rd ^ (val_rd1 << 16);
   
-  printf("[POST-TEST] errors = %0d\n",error);
+  printf("[POST-TEST] errors = %0d\r\n",error);
 
   return error;
 }

@@ -18,7 +18,7 @@
 
 int main()
 {
-  printf("Hello !\n");
+  printf("Hello !\r\n");
 
   return 0;
 }

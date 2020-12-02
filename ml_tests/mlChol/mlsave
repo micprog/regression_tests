@@ -139,7 +139,7 @@ int main(int argc, const char * const argv[])
 #else
   coreid = get_core_id();
 
-  print("starting %d kernel iterations... (coreid = %d)\n",KERNEL_ITS,coreid,0,0);
+  print("starting %d kernel iterations... (coreid = %d)\r\n",KERNEL_ITS,coreid,0,0);
 
   synch_barrier();
   

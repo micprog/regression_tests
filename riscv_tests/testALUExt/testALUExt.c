@@ -59,7 +59,7 @@ int main()
 
 #define util_check_rr(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b]\n" \
+      asm volatile (asm_str " %[c], %[a], %[b]\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -68,7 +68,7 @@ int main()
 
 #define util_check_r(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a]\n" \
+      asm volatile (asm_str " %[c], %[a]\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i])); \
       check_uint32(result, asm_str, act, prefix ## _exp[i]); \

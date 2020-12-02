@@ -55,7 +55,7 @@ int main()
       }
     }
 
-    printf("Cycles: %d\n", get_time());
+    printf("Cycles: %d\r\n", get_time());
 
     return 0;
 }

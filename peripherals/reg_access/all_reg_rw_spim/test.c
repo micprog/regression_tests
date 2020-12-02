@@ -35,7 +35,7 @@ int main()
 for (int u = 0; u < 1; ++u)
 {
   plp_udma_cg_set(plp_udma_cg_get() | (1<<ARCHI_UDMA_SPIM_ID(u)));
-  printf("QSPI # %d\n", u);
+  printf("QSPI # %d\r\n", u);
   for (int i = 0; i < 6; ++i)
   {
     address = ARCHI_UDMA_ADDR + UDMA_PERIPH_OFFSET(ARCHI_UDMA_SPIM_ID(u)) + wr_reg_offsets[i]; 

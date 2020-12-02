@@ -46,10 +46,10 @@ void print_array()
     for (i=0; i<N; i++) {
         for (j=0; j<N; j++) {
             fprintf(stdout, "%lf ", a[i][j]);
-            if (j%80 == 20) fprintf(stdout, "\n");
+            if (j%80 == 20) fprintf(stdout, "\r\n");
         }
     }
-    fprintf(stdout, "\n");
+    fprintf(stdout, "\r\n");
 }
 
 double rtclock()

@@ -125,14 +125,14 @@ int main()
 void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_t exp) {
   if (act != exp) {
     result->errors++;
-    printf("%s: Actual %08x, expected %08x\n", asm_str, act, exp);
+    printf("%s: Actual %08x, expected %08x\r\n", asm_str, act, exp);
   }
 }
 
 #define util_check_rrr(result, asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
       act = prefix ## _d[i]; \
-      asm volatile (asm_str " %[c], %[a], %[b]\n" \
+      asm volatile (asm_str " %[c], %[a], %[b]\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -142,7 +142,7 @@ void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_
 #define util_check_rrr_sci(result, asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
       act = prefix ## _d[i]; \
-      asm volatile (asm_str " %[c], %[a], " #imm "\n" \
+      asm volatile (asm_str " %[c], %[a], " #imm "\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i])); \
       test_check(result, asm_str, act, prefix ## _exp[i]); \
@@ -151,7 +151,7 @@ void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_
 #define util_check_rrri(result, asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
       act = prefix ## _d[i]; \
-      asm volatile (asm_str " %[c], %[a], %[b], " #imm "\n" \
+      asm volatile (asm_str " %[c], %[a], %[b], " #imm "\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -160,7 +160,7 @@ void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_
 
 #define util_check_rr(result, asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b]\n" \
+      asm volatile (asm_str " %[c], %[a], %[b]\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -169,7 +169,7 @@ void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_
 
 #define util_check_rr_sci(result, asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], " imm "\n" \
+      asm volatile (asm_str " %[c], %[a], " imm "\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i])); \
       test_check(result, asm_str, act, prefix ## _exp[i]); \
@@ -177,7 +177,7 @@ void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_
 
 #define util_check_rri(result, asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b], " #imm "\n" \
+      asm volatile (asm_str " %[c], %[a], %[b], " #imm "\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -186,7 +186,7 @@ void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_
 
 #define util_check_ri(result, asm_str, i, prefix, imm) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], " #imm "\n" \
+      asm volatile (asm_str " %[c], %[a], " #imm "\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i])); \
       test_check(result, asm_str, act, prefix ## _exp[i]); \
@@ -194,7 +194,7 @@ void test_check(testresult_t *result, const char* asm_str, uint32_t act, uint32_
 
 #define util_check_r(result, asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a]\n" \
+      asm volatile (asm_str " %[c], %[a]\r\n" \
                     : [c] "+r" (act) \
                     : [a] "r"  (prefix ## _a[i])); \
       test_check(result, asm_str, act, prefix ## _exp[i]); \

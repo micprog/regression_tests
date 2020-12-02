@@ -99,7 +99,7 @@ int test_singlethread(void (*test)(int16_t *, int16_t *, int16_t *, int, int, in
       sum = checksum(g_y);
       if(sum != RIGHT_CHECKSUM) {
          #ifndef PULP_SPI
- 	 printf("wrong checksum, 0x%08x instead of 0x00072930\n", sum);
+ 	 printf("wrong checksum, 0x%08x instead of 0x00072930\r\n", sum);
          #endif
          #ifdef CHECK_ERROR
          errors = check(g_y);
@@ -110,7 +110,7 @@ int test_singlethread(void (*test)(int16_t *, int16_t *, int16_t *, int, int, in
       #endif
 
       #ifndef PULP_SPI
-      printf("%s, errors=%d, time=%d\n", str, errors, get_time());
+      printf("%s, errors=%d, time=%d\r\n", str, errors, get_time());
       #endif
       
    }
@@ -141,7 +141,7 @@ int test_multithread(void (*test)(int16_t *, int16_t *, int16_t *, int, int, int
       sum = checksum(g_y);
       if(sum != RIGHT_CHECKSUM) {
          #ifndef PULP_SPI
-         printf("wrong checksum, 0x%08x instead of 0x00072930\n", sum);
+         printf("wrong checksum, 0x%08x instead of 0x00072930\r\n", sum);
          #endif
          #ifdef CHECK_ERROR
          errors = check(g_y);
@@ -152,7 +152,7 @@ int test_multithread(void (*test)(int16_t *, int16_t *, int16_t *, int, int, int
       #endif
 
       #ifndef PULP_SPI
-      printf("%s, errors=%d, time=%d\n", str, errors, get_time());
+      printf("%s, errors=%d, time=%d\r\n", str, errors, get_time());
       #endif
       
    }
@@ -895,13 +895,13 @@ void load() {
 void printW() {
    int i;
    for(i=0; i<FH*FW; i++)
-      printf("%04x\n", g_W[i]);
+      printf("%04x\r\n", g_W[i]);
 }
 
 void printX() {
    int i;
    for(i=0; i<IH*IW; i++)
-      printf("%04x\n", g_x[i]);
+      printf("%04x\r\n", g_x[i]);
 }
 
 int check(int16_t *y) {
@@ -912,7 +912,7 @@ int check(int16_t *y) {
       errors += err;
       #ifndef PULP_SPI
       if(err)
-         printf("error: y_out=%04x instead of %04x! y_in=%04x\n", y[i], correct_yout[i], g_y_in[i], 0);
+         printf("error: y_out=%04x instead of %04x! y_in=%04x\r\n", y[i], correct_yout[i], g_y_in[i], 0);
       #endif
    }
    return errors;

@@ -43,25 +43,25 @@ const char* __attribute__((weak)) get_testname()
 
 int main() {
 
-  printf("(%d %d) %s %d\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
+  printf("(%d %d) %s %d\r\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
 
   int cid = get_core_id();
 
-  printf("(%d %d) %s %d\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
+  printf("(%d %d) %s %d\r\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
 
   synch_barrier();
 
-  printf("(%d %d) %s %d\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
+  printf("(%d %d) %s %d\r\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
 
   if (cid == 0) {
 
-  printf("(%d %d) %s %d\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
+  printf("(%d %d) %s %d\r\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
     
     plp_power_init();
     test_setup();
     perf_reset();
 
-  printf("(%d %d) %s %d\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
+  printf("(%d %d) %s %d\r\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
 
     for (int i = 0; i < NUM_ITER; ++i) {
       test_clear();
@@ -86,14 +86,14 @@ int main() {
 
     int check = test_check();
 
-    printf("Correct: %d\n", check);
+    printf("Correct: %d\r\n", check);
     for (int i = 0; i < NUM_ITER; ++i)
-      printf("TS[%d]: %d\n", i, samples[i]);
+      printf("TS[%d]: %d\r\n", i, samples[i]);
 
     if (check == 1)
-      printf("== test: %s -> success, nr. of errors: %d, execution time: %d\n", get_testname(), 0, samples[0]);
+      printf("== test: %s -> success, nr. of errors: %d, execution time: %d\r\n", get_testname(), 0, samples[0]);
     else
-      printf("== test: %s -> fail, nr. of errors: %d, execution time: %d\n", get_testname(), 1, samples[0]);
+      printf("== test: %s -> fail, nr. of errors: %d, execution time: %d\r\n", get_testname(), 1, samples[0]);
     
     perf_print_all();
 
@@ -103,7 +103,7 @@ int main() {
       return 1;
   }
 
-  printf("(%d %d) %s %d\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
+  printf("(%d %d) %s %d\r\n", rt_cluster_id(), rt_core_id(), __FILE__, __LINE__);
 
   return 0;
 }

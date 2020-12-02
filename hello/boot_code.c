@@ -77,17 +77,17 @@ static void putch(boot_code_t *data, char c) {
 static inline void step_ok(boot_code_t *data) {
   putch(data, 'A' + data->step);  
   data->step++;
-  putch(data, '\n');  
+  putch(data, '\r\n');  
 }
 
 static inline void step_ko(boot_code_t *data) {
   putch(data, '!');  
-  putch(data, '\n');  
+  putch(data, '\r\n');  
 }
 
 static inline void step_done(boot_code_t *data) {
   putch(data, '.');  
-  putch(data, '\n');  
+  putch(data, '\r\n');  
 }
 
 #endif

@@ -19,24 +19,24 @@ parser = argparse.ArgumentParser(description='Generate stimuli')
 args = parser.parse_args()
 
 def write_hex8_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%02X%02X%02X%02X,\n' % (v[0] & 0xFF, v[1] & 0xFF, v[2] & 0xFF, v[3] & 0xFF))
-    f.write('};\n\n')
+        f.write('0x%02X%02X%02X%02X,\r\n' % (v[0] & 0xFF, v[1] & 0xFF, v[2] & 0xFF, v[3] & 0xFF))
+    f.write('};\r\n\r\n')
     return
 
 def write_hex16_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%04X%04X,\n' % (v[0] & 0xFFFF, v[1] & 0xFFFF))
-    f.write('};\n\n')
+        f.write('0x%04X%04X,\r\n' % (v[0] & 0xFFFF, v[1] & 0xFFFF))
+    f.write('};\r\n\r\n')
     return
 
 def write_hex32_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%08X,\n' % (v & 0xFFFFFFFF))
-    f.write('};\n\n')
+        f.write('0x%08X,\r\n' % (v & 0xFFFFFFFF))
+    f.write('};\r\n\r\n')
     return
 
 
@@ -53,7 +53,7 @@ def switch_case8(sel,val0,val1,val2,val3):
     return r
 
 def write_define(f, name,val):
-    f.write('#define %s %d\n\n' % (name,val))
+    f.write('#define %s %d\r\n\r\n' % (name,val))
     return
 
 NumberOfStimuli = 10

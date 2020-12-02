@@ -56,7 +56,7 @@ void do_rem(testresult_t* result, int a, int b, int exp) {
 
   if (act != exp) {
     result->errors++;
-    printf ("p.rem %d, %d: actual %d, expected %d\n", a, b, act, exp);
+    printf ("p.rem %d, %d: actual %d, expected %d\r\n", a, b, act, exp);
   }
 }
 
@@ -67,7 +67,7 @@ void do_remu(testresult_t* result, unsigned int a, unsigned int b, unsigned int 
 
   if (act != exp) {
     result->errors++;
-    printf ("p.remu %u, %u: actual %u, expected %u\n", a, b, act, exp);
+    printf ("p.remu %u, %u: actual %u, expected %u\r\n", a, b, act, exp);
   }
 }
 
@@ -78,7 +78,7 @@ void do_div(testresult_t* result, int a, int b, int exp) {
 
   if (act != exp) {
     result->errors++;
-    printf ("p.div %d, %d: actual %d, expected %d\n", a, b, act, exp);
+    printf ("p.div %d, %d: actual %d, expected %d\r\n", a, b, act, exp);
   }
 }
 
@@ -89,7 +89,7 @@ void do_divu(testresult_t* result, unsigned int a, unsigned int b, unsigned int 
 
   if (act != exp) {
     result->errors++;
-    printf ("p.divu %u, %u: actual %u, expected %u\n", a, b, act, exp);
+    printf ("p.divu %u, %u: actual %u, expected %u\r\n", a, b, act, exp);
   }
 }
 

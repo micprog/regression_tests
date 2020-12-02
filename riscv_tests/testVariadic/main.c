@@ -46,17 +46,17 @@ void check_variadic(testresult_t *result, void (*start)(), void (*stop)()) {
 
   if(fn_10arg(0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9) != 0) {
     result->errors++;
-    printf("Using 10 arguments without protype has failed\n");
+    printf("Using 10 arguments without protype has failed\r\n");
   }
 
   if(fn_10arg_var(0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9) != 0) {
     result->errors++;
-    printf("Using 10 arguments variadic without protype has failed\n");
+    printf("Using 10 arguments variadic without protype has failed\r\n");
   }
 
   if(fn_10arg_var_proto(0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9) != 0) {
     result->errors++;
-    printf("Using 10 arguments variadic with protype has failed\n");
+    printf("Using 10 arguments variadic with protype has failed\r\n");
   }
 }
 

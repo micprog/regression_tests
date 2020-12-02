@@ -32,24 +32,24 @@ class StimuliGenerator(object):
             ############################################################################
 
             def write_hex8_arr(self, name, arr):
-                self.f.write('unsigned int %s[] = {\n' % name)
+                self.f.write('unsigned int %s[] = {\r\n' % name)
                 for v in arr:
-                    self.f.write('0x%02X%02X%02X%02X,\n' % (
+                    self.f.write('0x%02X%02X%02X%02X,\r\n' % (
                         v[0] & 0xFF, v[1] & 0xFF, v[2] & 0xFF, v[3] & 0xFF))
-                self.f.write('};\n\n')
+                self.f.write('};\r\n\r\n')
 
             def write_hex16_arr(self, name, arr):
-                self.f.write('unsigned int %s[] = {\n' % name)
+                self.f.write('unsigned int %s[] = {\r\n' % name)
                 for v in arr:
-                    self.f.write('0x%04X%04X,\n' % (
+                    self.f.write('0x%04X%04X,\r\n' % (
                         v[0] & 0xFFFF, v[1] & 0xFFFF))
-                self.f.write('};\n\n')
+                self.f.write('};\r\n\r\n')
 
             def write_hex32_arr(self, name, arr):
-                self.f.write('unsigned int %s[] = {\n' % name)
+                self.f.write('unsigned int %s[] = {\r\n' % name)
                 for v in arr:
-                    self.f.write('0x%08X,\n' % (v & 0xFFFFFFFF))
-                self.f.write('};\n\n')
+                    self.f.write('0x%08X,\r\n' % (v & 0xFFFFFFFF))
+                self.f.write('};\r\n\r\n')
 
             ############################################################################
             # Random stimuli generation

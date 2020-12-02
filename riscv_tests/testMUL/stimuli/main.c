@@ -34,7 +34,7 @@ int main() {
   int n = 400;
   FILE* stream = fopen("stimuli.h", "w");
 
-  fprintf(stream, "int n_stimuli = %d;\n\n", n);
+  fprintf(stream, "int n_stimuli = %d;\r\n\r\n", n);
 
   gen_stimuli_mul   (stream, n);
   gen_stimuli_mulh  (stream, n);
@@ -98,27 +98,27 @@ uint32_t mulhsu(int32_t a, uint32_t b) {
 void write_stimuli_uint32(FILE* stream, const char* name, uint32_t* stim, unsigned int n) {
   int i;
 
-  fprintf(stream, "uint32_t %s[] = {\n", name);
+  fprintf(stream, "uint32_t %s[] = {\r\n", name);
 
   for(i = 0; i < n-1; i++) {
-    fprintf(stream, "  %u,\n", stim[i]);
+    fprintf(stream, "  %u,\r\n", stim[i]);
   }
 
-  fprintf(stream, "  %u\n", stim[i]);
-  fprintf(stream, "  };\n\n");
+  fprintf(stream, "  %u\r\n", stim[i]);
+  fprintf(stream, "  };\r\n\r\n");
 }
 
 void write_stimuli_int32(FILE* stream, const char* name, int32_t* stim, unsigned int n) {
   int i;
 
-  fprintf(stream, "int32_t %s[] = {\n", name);
+  fprintf(stream, "int32_t %s[] = {\r\n", name);
 
   for(i = 0; i < n-1; i++) {
-    fprintf(stream, "  %d,\n", stim[i]);
+    fprintf(stream, "  %d,\r\n", stim[i]);
   }
 
-  fprintf(stream, "  %d\n", stim[i]);
-  fprintf(stream, "  };\n\n");
+  fprintf(stream, "  %d\r\n", stim[i]);
+  fprintf(stream, "  };\r\n\r\n");
 }
 void gen_stimuli_mul(FILE* stream, unsigned int n) {
   int i;

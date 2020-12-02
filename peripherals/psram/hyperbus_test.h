@@ -221,7 +221,7 @@ static inline void udma_hyperflash_bwrite(unsigned int nb_word, unsigned int hyp
     for(int i=0; i< nb_word; i++ ){
        while(udma_hyper_nb_tran(tran_id)>7){}
        udma_hyperflash_wwrite(hyper_waddr+i, *((short int *) l2_addr+i), tran_id);
-       //printf("%d th data= %x \n", hyper_waddr+i,  *((short int *) l2_addr+i));
+       //printf("%d th data= %x \r\n", hyper_waddr+i,  *((short int *) l2_addr+i));
     }
     udma_hyperflash_wwrite(hyper_waddr, 0x0029, tran_id);
     wait_cycles(125000);

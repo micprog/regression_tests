@@ -50,12 +50,12 @@ int main()
   for (int u = 0; u < 1; ++u)
   {
     plp_udma_cg_set(plp_udma_cg_get() | (1<<u));
-    printf("UART # %d\n", u);
+    printf("UART # %d\r\n", u);
     for (int i = 0; i < 8; ++i)
     {
       address = ARCHI_UDMA_ADDR + UDMA_PERIPH_OFFSET(ARCHI_UDMA_UART_ID(u)) + wr_reg_offsets[i]; 
       pulp_write32(address, val_wr); 
-      printf("write %x @ %x\n", val_wr, address);
+      printf("write %x @ %x\r\n", val_wr, address);
     }
     cg_val = plp_udma_cg_get();
     cg_val &= ~(1<<u);

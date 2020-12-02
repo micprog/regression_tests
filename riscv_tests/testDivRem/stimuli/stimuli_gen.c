@@ -131,61 +131,61 @@ void randomize_remu(struct stimuli_t* stim, int count) {
 }
 
 void write_div(FILE* f, struct stimuli_t* stim, int count) {
-  fprintf(f, "#define DIV_STIMS %u\n", count);
-  fprintf(f, "struct div_stim_t {\n");
-  fprintf(f, "     int a;\n");
-  fprintf(f, "     int b;\n");
-  fprintf(f, "     int exp;\n");
-  fprintf(f, "};\n\n");
-  fprintf(f, "struct div_stim_t div_stim[%u] = {\n", count);
+  fprintf(f, "#define DIV_STIMS %u\r\n", count);
+  fprintf(f, "struct div_stim_t {\r\n");
+  fprintf(f, "     int a;\r\n");
+  fprintf(f, "     int b;\r\n");
+  fprintf(f, "     int exp;\r\n");
+  fprintf(f, "};\r\n\r\n");
+  fprintf(f, "struct div_stim_t div_stim[%u] = {\r\n", count);
 
   for(int i = 0; i < count; i++) {
     struct stimuli_t* pStim = &stim[i];
-    fprintf(f, "          {%d, %d, %d},\n", pStim->a, pStim->b, pStim->exp);
+    fprintf(f, "          {%d, %d, %d},\r\n", pStim->a, pStim->b, pStim->exp);
   }
 
-  fprintf(f, "};\n\n\n");
+  fprintf(f, "};\r\n\r\n\r\n");
 }
 
 void write_divu(FILE* f, struct stimuli_t* stim, int count) {
-  fprintf(f, "#define DIVU_STIMS %u\n", count);
-  fprintf(f, "struct divu_stim_t {\n");
-  fprintf(f, "     unsigned int a;\n");
-  fprintf(f, "     unsigned int b;\n");
-  fprintf(f, "     unsigned int exp;\n");
-  fprintf(f, "};\n\n");
-  fprintf(f, "struct divu_stim_t divu_stim[%u] = {\n", count);
+  fprintf(f, "#define DIVU_STIMS %u\r\n", count);
+  fprintf(f, "struct divu_stim_t {\r\n");
+  fprintf(f, "     unsigned int a;\r\n");
+  fprintf(f, "     unsigned int b;\r\n");
+  fprintf(f, "     unsigned int exp;\r\n");
+  fprintf(f, "};\r\n\r\n");
+  fprintf(f, "struct divu_stim_t divu_stim[%u] = {\r\n", count);
 
   for(int i = 0; i < count; i++) {
     struct stimuli_t* pStim = &stim[i];
-    fprintf(f, "          {%u, %u, %u},\n", pStim->a, pStim->b, pStim->exp);
+    fprintf(f, "          {%u, %u, %u},\r\n", pStim->a, pStim->b, pStim->exp);
   }
 
-  fprintf(f, "};\n\n\n");
+  fprintf(f, "};\r\n\r\n\r\n");
 }
 
 void write_rem(FILE* f, struct stimuli_t* stim, int count) {
-  fprintf(f, "#define REM_STIMS %u\n", count);
-  fprintf(f, "struct div_stim_t rem_stim[%u] = {\n", count);
+  fprintf(f, "#define REM_STIMS %u\r\n", count);
+  fprintf(f, "struct div_stim_t rem_stim[%u] = {\r\n", count);
 
   for(int i = 0; i < count; i++) {
     struct stimuli_t* pStim = &stim[i];
-    fprintf(f, "          {%d, %d, %d},\n", pStim->a, pStim->b, pStim->exp);
+    fprintf(f, "          {%d, %d, %d},\r\n", pStim->a, pStim->b, pStim->exp);
   }
 
-  fprintf(f, "};\n\n\n");
+  fprintf(f, "};\r\n\r\n\r\n");
 }
 
 void write_remu(FILE* f, struct stimuli_t* stim, int count) {
-  fprintf(f, "#define REMU_STIMS %u\n", count);
-  fprintf(f, "struct divu_stim_t remu_stim[%u] = {\n", count);
+  fprintf(f, "#define REMU_STIMS %u\r\n", count);
+  fprintf(f, "struct divu_stim_t remu_stim[%u] = {\r\n", count);
 
   for(int i = 0; i < count; i++) {
     struct stimuli_t* pStim = &stim[i];
-    fprintf(f, "          {%u, %u, %u},\n", pStim->a, pStim->b, pStim->exp);
+    fprintf(f, "          {%u, %u, %u},\r\n", pStim->a, pStim->b, pStim->exp);
   }
 
-  fprintf(f, "};\n\n\n");
+  fprintf(f, "};\r\n\r\n\r\n");
 }
 
 int main() {

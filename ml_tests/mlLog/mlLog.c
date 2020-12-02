@@ -141,7 +141,7 @@ int main(int argc, const char * const argv[])
 
   coreid = rt_core_id();
 
-  printf("starting %d kernel iterations... (coreid = %d)\n",KERNEL_ITS,coreid);
+  printf("starting %d kernel iterations... (coreid = %d)\r\n",KERNEL_ITS,coreid);
 
     if (coreid>3)
     coreid= (coreid-4) % 4;

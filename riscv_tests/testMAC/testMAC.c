@@ -86,7 +86,7 @@ void check_mul(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check mul
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_mul_a)/4); i++) {
-    asm volatile ("mul %[d], %[a], %[b]\n"
+    asm volatile ("mul %[d], %[a], %[b]\r\n"
                   : [d] "+r" (tmp)
                   : [a] "r"  (g_mul_a[i]),
                     [b] "r"  (g_mul_b[i]));

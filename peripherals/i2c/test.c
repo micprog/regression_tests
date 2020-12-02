@@ -70,14 +70,14 @@ int main()
 
     //WRITE
 
-    printf("[%d, %d] Start test i2c write %d\n",  get_cluster_id(), get_core_id(),u);
+    printf("[%d, %d] Start test i2c write %d\r\n",  get_cluster_id(), get_core_id(),u);
 
     //--- enable all the udma channels (see below for selective enable)
     plp_udma_cg_set(plp_udma_cg_get() | (0xffffffff));
 
     //--- get the base address of the udma channels
     unsigned int udma_i2c_channel_base = hal_udma_channel_base(UDMA_CHANNEL_ID(ARCHI_UDMA_I2C_ID(u)));
-    printf("uDMA i2c%d base channel address %8x\n", u,udma_i2c_channel_base);
+    printf("uDMA i2c%d base channel address %8x\r\n", u,udma_i2c_channel_base);
 
     
     //--- enqueue cmds on cmd channel
@@ -101,14 +101,14 @@ int main()
     }
     expected_rx_buffer[1]=u;
 
-    printf("[%d, %d] Start test i2c read %d\n",  get_cluster_id(), get_core_id(),u);
+    printf("[%d, %d] Start test i2c read %d\r\n",  get_cluster_id(), get_core_id(),u);
 
     //--- enable all the udma channels (see below for selective enable)
     plp_udma_cg_set(plp_udma_cg_get() | (0xffffffff));
 
     //--- get the base address of the udma channels
     //unsigned int udma_i2c_channel_base = hal_udma_channel_base(UDMA_CHANNEL_ID(ARCHI_UDMA_I2C_ID(u)));
-    printf("uDMA i2c%d base channel address %8x\n", u,udma_i2c_channel_base);
+    printf("uDMA i2c%d base channel address %8x\r\n", u,udma_i2c_channel_base);
 
     //--- enqueue cmds on cmd channel and set the rx channel
 
@@ -122,10 +122,10 @@ int main()
     {
       if (rx_buffer[i]!=expected_rx_buffer[i])
       {
-        printf("rx_buffer[%0d]=0x%0x different from expected 0x%0x\n", i, rx_buffer[i], expected_rx_buffer[i]);
+        printf("rx_buffer[%0d]=0x%0x different from expected 0x%0x\r\n", i, rx_buffer[i], expected_rx_buffer[i]);
         error++;
       }
-      else printf("rx_buffer[%0d]=0x%0x as expected\n", i, rx_buffer[i]);
+      else printf("rx_buffer[%0d]=0x%0x as expected\r\n", i, rx_buffer[i]);
     }
     
       

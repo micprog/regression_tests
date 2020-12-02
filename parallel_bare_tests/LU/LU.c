@@ -81,7 +81,7 @@ static inline int factor(int *A[], int m, int n, int pivot[])
 
         if (A[jp][j] == 0 )
           {
-            printf("ERRORE DETECTED = %d\n", id);
+            printf("ERRORE DETECTED = %d\r\n", id);
             error_status = 1;       // factorization failed because of zero pivot
           }
 
@@ -161,7 +161,7 @@ int main(int argc, char **argv)
   id = rt_core_id();
 
   if (id == 0)
-    printf("Starting LU application... \n");
+    printf("Starting LU application... \r\n");
 
   for (i=0; i<N*N; ++i)
     lu_in[i] = lu[i];
@@ -200,7 +200,7 @@ int main(int argc, char **argv)
 
 
   if (id == 0)
-    printf("...LU application complete!  Errors: %d, Time: %d cycles\n",error,time);
+    printf("...LU application complete!  Errors: %d, Time: %d cycles\r\n",error,time);
 
   perf_print_all();
   print_summary((unsigned int) error);

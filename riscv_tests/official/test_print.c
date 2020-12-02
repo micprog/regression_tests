@@ -27,12 +27,12 @@ unsigned int getNbErrors()
 }
 
 void print_okay(const int testnr, const char *testsuite) {
-  printf("Test suite OK: %s\n", testsuite);
+  printf("Test suite OK: %s\r\n", testsuite);
 }
 
 void print_fail(const int testnr, const char *testsuite) {
   g_errors++;
-  printf("Test FAIL: %d (suite %s)\n", testnr, testsuite);
+  printf("Test FAIL: %d (suite %s)\r\n", testnr, testsuite);
 }
 
 
@@ -44,10 +44,10 @@ void print_test_summary()
   ptr[1] = g_errors;
 
   if (g_errors == 0) {
-    printf("OOOOOOK!!!!!!\n");
+    printf("OOOOOOK!!!!!!\r\n");
     ptr[0] = 0xABBAABBA;
   } else {
-    printf("NOT OK!!!!!\n");
+    printf("NOT OK!!!!!\r\n");
     ptr[0] = 0xDEADBEEF;
   }
 }

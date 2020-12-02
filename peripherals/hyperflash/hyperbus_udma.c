@@ -47,19 +47,19 @@ int main() {
     } 
     hyper_waddr = 0;
     udma_hyperflash_bwrite((BUFFER_SIZE*2), hyper_waddr,(unsigned int) tx_buffer,0);
-    printf("Busy: %d \n", udma_hyper_busy(0));
+    printf("Busy: %d \r\n", udma_hyper_busy(0));
     hyper_addr = 0;
     udma_hyper_dread((BUFFER_SIZE*4), hyper_addr, (unsigned int)rx_buffer, 0,0);
     udma_hyper_wait(0); 
 
     for (int i=0; i< BUFFER_SIZE; i++)
      {      
-       printf("rx_buffer[%d] = %x, expected: %x \n", i, rx_buffer[i], tx_buffer[i]); 
+       printf("rx_buffer[%d] = %x, expected: %x \r\n", i, rx_buffer[i], tx_buffer[i]); 
        error += rx_buffer[i] ^ tx_buffer[i];
       }
    if (error!=0) { 
        pass=1;
-       printf("errors\n");
+       printf("errors\r\n");
        }
   
    return pass;

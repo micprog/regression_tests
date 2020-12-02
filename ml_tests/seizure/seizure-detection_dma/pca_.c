@@ -33,10 +33,10 @@
          #endif
 	 float *a = plp_alloc_l1((int)(channels*channels*sizeof(float)));
          float *v = plp_alloc_l1((int)(channels*channels*sizeof(float)));
-	 //printf("malloc %x %x \n",a,v);
+	 //printf("malloc %x %x \r\n",a,v);
 	 #if HWPERFMALLOC
 	 perf_stop();
-	 printf("STOP alloc\n"); perf_print_all();
+	 printf("STOP alloc\r\n"); perf_print_all();
          #endif
          float w[channels]; //eigenvalues
          float explained[channels];
@@ -46,7 +46,7 @@
 
          #if HWPERF_FUNC
 	 perf_stop();
-	 printf("START PCA\n"); perf_print_all();
+	 printf("START PCA\r\n"); perf_print_all();
 	 perf_start();
          #endif
 
@@ -54,7 +54,7 @@
  
          #if HWPERF_FUNC
 	 perf_stop();
-	 printf("COVARIANCE\n"); perf_print_all();
+	 printf("COVARIANCE\r\n"); perf_print_all();
 	 perf_start();
          #endif
 
@@ -62,7 +62,7 @@
        
          #if HWPERF_FUNC
 	 perf_stop();
-	 printf("HOUSEHOLDER\n"); perf_print_all();
+	 printf("HOUSEHOLDER\r\n"); perf_print_all();
 	 perf_start();
          #endif
 
@@ -70,7 +70,7 @@
    
          #if HWPERF_FUNC
 	 perf_stop();
-	 printf("ACCUMULATE\n"); perf_print_all();
+	 printf("ACCUMULATE\r\n"); perf_print_all();
 	 perf_start();
          #endif
 
@@ -78,7 +78,7 @@
 
          #if HWPERF_FUNC
 	 perf_stop();
-	 printf("DIAGONALIZE\n"); perf_print_all();
+	 printf("DIAGONALIZE\r\n"); perf_print_all();
 	 perf_start();
          #endif
 
@@ -120,9 +120,9 @@
          #if HWPERF
 	 perf_stop();
 	 #endif
-         printf("\nexplained variance:\n%d\ncomponents: %d\n", (int)vartotspiegata,(channels-i));
+         printf("\r\nexplained variance:\r\n%d\r\ncomponents: %d\r\n", (int)vartotspiegata,(channels-i));
          k=channels-i;
-         printf("Number of components we consider: %d\n", k);
+         printf("Number of components we consider: %d\r\n", k);
          #if HWPERF
 	 perf_start();
 	 #endif
@@ -135,7 +135,7 @@
 
          #if HWPERF_FUNC
 	 perf_stop();
-	 printf("END PC\n"); perf_print_all();
+	 printf("END PC\r\n"); perf_print_all();
 	 perf_start();
          #endif
 
@@ -151,7 +151,7 @@
 
          #if HWPERFFREE
 	 perf_stop();
-	 printf("FREE\n"); perf_print_all();
+	 printf("FREE\r\n"); perf_print_all();
          #endif
 
          return k_comp;
@@ -166,10 +166,10 @@ void mean_covariance(float datiInput[][256], float a[channels*channels]){
 	perf_start();
         #endif
 	datainput = plp_alloc_l1((int)(window*channels*sizeof(float)));
-	//printf("malloc %x \n",datainput);
+	//printf("malloc %x \r\n",datainput);
         #if HWPERFMALLOC
 	perf_stop();
-	printf("STOP alloc\n"); perf_print_all();
+	printf("STOP alloc\r\n"); perf_print_all();
         #endif
 	int dma_id0 = memcpy_async(datainput, datiInput, window*channels*4);
 	memcpy_wait(dma_id0);
@@ -224,7 +224,7 @@ void mean_covariance(float datiInput[][256], float a[channels*channels]){
 	datainput = NULL;
 #if HWPERFFREE
 	perf_stop();
-	printf("FREE\n"); perf_print_all();
+	printf("FREE\r\n"); perf_print_all();
 #endif
 
 }
@@ -573,10 +573,10 @@ void PC(float datiInput[][256], float datioutput[][256], float v[channels*channe
 	perf_start();
         #endif
 	datainput = plp_alloc_l1((int)(window*channels*sizeof(float)));
-	//printf("malloc %x \n",datainput);
+	//printf("malloc %x \r\n",datainput);
         #if HWPERFMALLOC
 	perf_stop();
-	printf("STOP alloc\n"); perf_print_all();
+	printf("STOP alloc\r\n"); perf_print_all();
 	#endif
 	int dma_id0 = memcpy_async(datainput, datiInput, window*channels*4);
 	memcpy_wait(dma_id0);
@@ -609,6 +609,6 @@ void PC(float datiInput[][256], float datioutput[][256], float v[channels*channe
 	datainput = NULL;
 #if HWPERFFREE
 	perf_stop();
-	printf("FREE\n"); perf_print_all();
+	printf("FREE\r\n"); perf_print_all();
 #endif
 }

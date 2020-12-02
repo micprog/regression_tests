@@ -38,47 +38,47 @@ int main() {
     int periph_id = 8;
     int channel = UDMA_EVENT_ID(periph_id);
 
-    printf("UDMA_EVENT_ID %d\n",channel);
+    printf("UDMA_EVENT_ID %d\r\n",channel);
     soc_eu_fcEventMask_setEvent(channel+3);
 
 
     udma_hyper_setup();
-    //printf(" current frequency %d \n", __rt_freq_periph_get());
+    //printf(" current frequency %d \r\n", __rt_freq_periph_get());
    
     for (int i=0; i< (BUFFER_SIZE); i++)
     {
         tx_buffer[i] = 0xffff0000+i;
     } 
     hyper_addr = 1;
-    printf("hyper_addr: %d \n", hyper_addr);
+    printf("hyper_addr: %d \r\n", hyper_addr);
     
     udma_hyper_dwrite((BUFFER_SIZE*4),(unsigned int) hyper_addr, (unsigned int)tx_buffer, 128, 0);
-    printf("started writing\n");
+    printf("started writing\r\n");
     
-    printf("BUSY: %d ID:%d \n", udma_hyper_busy(id1), id1);
+    printf("BUSY: %d ID:%d \r\n", udma_hyper_busy(id1), id1);
     udma_hyper_wait(0);
-    printf("BUSY: %d \n", udma_hyper_busy(0));
+    printf("BUSY: %d \r\n", udma_hyper_busy(0));
     
     udma_hyper_dread((BUFFER_SIZE*4),(unsigned int) hyper_addr, (unsigned int)rx_buffer, 128, 0);
     
     udma_hyper_wait(0); 
     
-    printf("start reading\n");
+    printf("start reading\r\n");
     for (int i=0; i< BUFFER_SIZE; i++)
       {      
       
-      printf("rx_buffer[%d] = %x, expected: %x \n", i, rx_buffer[i], tx_buffer[i]);
+      printf("rx_buffer[%d] = %x, expected: %x \r\n", i, rx_buffer[i], tx_buffer[i]);
       error += rx_buffer[i] ^ tx_buffer[i];
       
       }
 
       if(error!=0) { 
-          printf("error \n");
+          printf("error \r\n");
           pass=1;
           }
-      else printf("ok\n");
+      else printf("ok\r\n");
 
-      printf("Fin. \n");
+      printf("Fin. \r\n");
 
       return pass;
   

@@ -54,5 +54,5 @@ static void putint(
       c = ((char) integer_bcd[j]) + 48;
       myputchar(c);
    }
-   myputchar('\n');
+   myputchar('\r\n');
 }

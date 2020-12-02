@@ -47,7 +47,7 @@ int factor(int *A[], int M, int N, int pivot[])
     //for (i=0;i<N;i++)
     //  printf("%d, ",*(A[i]));
     
-    //printf("\n");
+    //printf("\r\n");
     
     #pragma omp parallel
     {
@@ -56,16 +56,16 @@ int factor(int *A[], int M, int N, int pivot[])
         // note A(j,j), was A(jp,p) previously which was
         // guarranteed not to be zero (Label #1)
         //
-        //printf("\nVALS = %d %d \n",  F, A[j][j]);
+        //printf("\r\nVALS = %d %d \r\n",  F, A[j][j]);
         int recp = (F * F) / A[j][j];
         
         #pragma omp for
         for (k=j+1; k<M; ++k)
         {
-          //printf("---> %d %d (th: %d)\n", A[k][j], recp, omp_get_thread_num());
+          //printf("---> %d %d (th: %d)\r\n", A[k][j], recp, omp_get_thread_num());
           A[k][j] *= recp;
           A[k][j] /= F;
-          //printf("* (%d %d) --> %d \n", k, j, A[k][j]);
+          //printf("* (%d %d) --> %d \r\n", k, j, A[k][j]);
         }
       }
       
@@ -87,7 +87,7 @@ int factor(int *A[], int M, int N, int pivot[])
           for (jj=j+1; jj<N; ++jj)
           {
             Aii[jj] -= (AiiJ * Aj[jj])/F;
-            //printf("(%d %d) --> %d %d\n", ii, jj, (AiiJ * Aj[jj])/F, Aii[jj]);
+            //printf("(%d %d) --> %d %d\r\n", ii, jj, (AiiJ * Aj[jj])/F, Aii[jj]);
           }
           
         }
@@ -124,25 +124,25 @@ int main(int argc, char **argv)
   for(i=0; i<N; ++i)
     G[i] = elements+N*i;
   
-  printf("int lu[N*N] = {\n");
+  printf("int lu[N*N] = {\r\n");
   for(i=0; i<N; ++i){
     for(j=0; j<N; ++j){
       printf("%2d, ", elements[i*N + j]);
     }
-    printf("\n");
+    printf("\r\n");
   }
-  printf("};\n\n");
+  printf("};\r\n\r\n");
   
   factor(G, N, N, pivots);
   
-  printf("int lu_ref[N*N] = {\n");
+  printf("int lu_ref[N*N] = {\r\n");
   for(i=0; i<N; ++i){
     for(j=0; j<N; ++j){
       printf("%5d, ", elements[i*N + j]);
     }
-    printf("\n");
+    printf("\r\n");
   }
-  printf("};\n");
+  printf("};\r\n");
   
   return 0;
 }

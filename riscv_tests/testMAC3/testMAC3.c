@@ -106,7 +106,7 @@ int main()
 
 #define util_check_mac(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b]\n" \
+      asm volatile (asm_str " %[c], %[a], %[b]\r\n" \
                     : [c] "+r" (prefix ## _act[i]) \
                     : [a] "r"  (prefix ## _a[i]), \
                       [b] "r" (prefix ## _b[i])); \
@@ -115,8 +115,8 @@ int main()
 
 #define util_check_mac_flags(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile (asm_str " %[c], %[a], %[b]\n" \
-                    "l.mfspr %[spr], r0, 0x11\n" \
+      asm volatile (asm_str " %[c], %[a], %[b]\r\n" \
+                    "l.mfspr %[spr], r0, 0x11\r\n" \
                     : [c] "+r"   (prefix ## _act[i]), \
                       [spr] "+r" (spr) \
                     : [a] "r"    (prefix ## _a[i]), \
@@ -129,8 +129,8 @@ int main()
 
 #define util_check_mac_c(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile ("l.addi %[tmp], %[cy], 0x1\n" \
-                    asm_str " %[c], %[a], %[b]\n" \
+      asm volatile ("l.addi %[tmp], %[cy], 0x1\r\n" \
+                    asm_str " %[c], %[a], %[b]\r\n" \
                     : [c]   "+r" (prefix ## _act[i]), \
                       [tmp] "+&r" (tmp) \
                     : [a]   "r"  (prefix ## _a[i]), \
@@ -141,9 +141,9 @@ int main()
 
 #define util_check_mac_flags_c(asm_str, i, prefix) \
     for(i = 0; i < (sizeof(prefix ## _a)/4); i++) { \
-      asm volatile ("l.addi %[tmp], %[cy], 0x1\n" \
-                    asm_str " %[c], %[a], %[b]\n" \
-                    "l.mfspr %[spr], r0, 0x11\n" \
+      asm volatile ("l.addi %[tmp], %[cy], 0x1\r\n" \
+                    asm_str " %[c], %[a], %[b]\r\n" \
+                    "l.mfspr %[spr], r0, 0x11\r\n" \
                     : [c]   "+r" (prefix ## _act[i]), \
                       [tmp] "+&r" (tmp), \
                       [spr] "+r" (spr) \

@@ -96,7 +96,7 @@ int main()
   if (coreid == 1) {
     n_toh = NR_PLATES;
 
-    printf("Start Tower of Hanoi\n");
+    printf("Start Tower of Hanoi\r\n");
 
     for (j_toh=0; j_toh<2; j_toh++) {
       for (i_toh=0;i_toh<n_toh;i_toh++){
@@ -106,7 +106,7 @@ int main()
       }
 
     computeGoldToH(n_toh, A, B, C);
-    printf("Iteration %d completed\n",j_toh);
+    printf("Iteration %d completed\r\n",j_toh);
     }
 
     for (i_toh=0;i_toh<n_toh;i_toh++) {
@@ -116,7 +116,7 @@ int main()
     }
 
   } else if (coreid == 0) {
-   printf("start sudokusolver\n");
+   printf("start sudokusolver\r\n");
 
    // store sudoku to solve in grid_init
    for (i_ss=0;i_ss<9;i_ss++){
@@ -151,19 +151,19 @@ int main()
 
      // start solver
      sudokusolver(grid_solved, solved);
-     printf("Iteration %d completed\n",k_ss);
+     printf("Iteration %d completed\r\n",k_ss);
    }
 
    // print solution
-   printf("Solution:\n");
+   printf("Solution:\r\n");
 
    for (i_ss=0;i_ss<9;i_ss++){
-     printf("\n");
+     printf("\r\n");
      for (j_ss=0;j_ss<9;j_ss++){
         printf("%d ",grid_solved[i_ss*SUDOKUSIZE+j_ss]);
      }
    }
-   printf("\n");
+   printf("\r\n");
 
    // check result!
    for (i_ss=0;i_ss<SUDOKUSIZE;i_ss++) {
@@ -171,7 +171,7 @@ int main()
         if (SUDOKUSOLVED[i_ss*SUDOKUSIZE+k_ss] != grid_solved[i_ss*SUDOKUSIZE+k_ss]) {
           error = error + 1;
 #ifdef DEBUG_OUTPUT
-          printf("Error occurred at i=%d k=%d; Computed result %d does not match expected result %d\n",i_ss,k_ss,grid_solved[i_ss*SUDOKUSIZE+k_ss],SUDOKUSOLVED[i_ss*SUDOKUSIZE+k_ss]);
+          printf("Error occurred at i=%d k=%d; Computed result %d does not match expected result %d\r\n",i_ss,k_ss,grid_solved[i_ss*SUDOKUSIZE+k_ss],SUDOKUSOLVED[i_ss*SUDOKUSIZE+k_ss]);
 #endif
         }
      }
@@ -179,7 +179,7 @@ int main()
 
   } else if (coreid == 2) {
 
-    printf("start MatrixMul\n");
+    printf("start MatrixMul\r\n");
 
     for (i_mm = 0; i_mm < WA * HA; i_mm++)
       h_A[i_mm] = i_mm;
@@ -189,20 +189,20 @@ int main()
 
     for (i_mm = 0; i_mm<2; i_mm++) {
       computeGoldMatrixMul(h_C, h_A, h_B, HA, WA, WB);
-      printf("Iteration %d completed\n",i_mm);
+      printf("Iteration %d completed\r\n",i_mm);
     }
 
     for (i_mm=0; i_mm<WC*HC; i_mm++) {
       if (h_C[i_mm] != RESULT_MUL[i_mm]) {
 #ifdef DEBUG_OUTPUT
-        printf("expected result: %d, actual result: %d\n",RESULT_MUL[i_mm],h_C[i_mm]);
+        printf("expected result: %d, actual result: %d\r\n",RESULT_MUL[i_mm],h_C[i_mm]);
 #endif
         error = error + 1;
       }
     }
   } else if (coreid == 3){
 
-    printf("start stencil\n");
+    printf("start stencil\r\n");
 
     for (i_st=0;i_st<N;i_st++) {
       for (k_st=0;k_st<M;k_st++)
@@ -214,16 +214,16 @@ int main()
 
     for (j_st = 0; j_st<2; j_st++) {
       stencil(D, R, W);
-      printf("Iteration %d completed\n",j_st);
+      printf("Iteration %d completed\r\n",j_st);
     }
 
    for (i_st=0;i_st<N;i_st++) { 
      for (k_st=0;k_st<M;k_st++) {
-       //       printf("%d %d\n",RESULT[i*M+k],R[i*M+k],0,0); 
+       //       printf("%d %d\r\n",RESULT[i*M+k],R[i*M+k],0,0); 
        if (RESULT_STENCIL[i_st*M+k_st] != R[i_st*M+k_st]) {
          error = error + 1;
 #ifdef DEBUG_OUTPUT
-         printf("Error occurred at i=%d k=%d; Computed result R=%d does not match expected Result=%d\n",i_st,k_st,R[i_st*M+k_st],RESULT_STENCIL[i_st*M+k_st]);
+         printf("Error occurred at i=%d k=%d; Computed result R=%d does not match expected Result=%d\r\n",i_st,k_st,R[i_st*M+k_st],RESULT_STENCIL[i_st*M+k_st]);
 #endif
        }
      }
@@ -265,12 +265,12 @@ void stencil(int* D, int* R, int* W)
     for (d = 0 ; d < M; d++)
     {
       getEntries(neighbors, weights, D, W, c, d);
-      //printf("neighbors %d %d %d %d\n",neighbors[0],neighbors[1],neighbors[2],neighbors[3]);
-      //printf("weights   %d %d %d %d\n",weights[0],weights[1],weights[2],weights[3]);
+      //printf("neighbors %d %d %d %d\r\n",neighbors[0],neighbors[1],neighbors[2],neighbors[3]);
+      //printf("weights   %d %d %d %d\r\n",weights[0],weights[1],weights[2],weights[3]);
       R[c*M+d] = D[c*M+d] + neighbors[3]*weights[3] + neighbors[0]*weights[0] + neighbors[1]*weights[1] + neighbors[2]*weights[2];
 
-      //printf("D: %d\n",D[c*M+d],0,0,0);
-      //printf("R: %d\n",R[c*M+d],0,0,0);
+      //printf("D: %d\r\n",D[c*M+d],0,0,0);
+      //printf("R: %d\r\n",R[c*M+d],0,0,0);
     }
   }
 }

@@ -37,7 +37,7 @@ int main()
     return bench_cluster_forward(0);
 
         init_fp_regs();
-	printf("Start Seizure detection application\n");
+	printf("Start Seizure detection application\r\n");
         #ifdef SEQ
         if(rt_core_id())
                 return 0;
@@ -58,11 +58,11 @@ int main()
                 
                 #if HWPERF_FUNC
 		perf_stop();
-		printf("START DWT\n"); perf_print_all();
+		printf("START DWT\r\n"); perf_print_all();
 		perf_start();
                 #endif
 
-		//printf("start omp parallel\n");
+		//printf("start omp parallel\r\n");
 #pragma omp parallel private(dwt, i, energy_vector) shared(energy_matrix) num_threads(CORE)//shared(energy_matrix)
                 {
 		  
@@ -72,11 +72,11 @@ int main()
 #endif
 		  ptr_workspace          = plp_alloc_l1((int)sizeof(gsl_wavelet_workspace));
 		  ptr_workspace->scratch = plp_alloc_l1((int)(window*sizeof(float)));
-		  //printf("malloc %x %x \n",ptr_workspace,ptr_workspace->scratch);
+		  //printf("malloc %x %x \r\n",ptr_workspace,ptr_workspace->scratch);
 		  ptr_workspace->n       = window;
 #if HWPERFMALLOC
 		  perf_stop();
-		  printf("STOP alloc\n"); perf_print_all();
+		  printf("STOP alloc\r\n"); perf_print_all();
 #endif
 
 
@@ -86,15 +86,15 @@ int main()
                                 
                                 for(indx=0; indx<window; indx++){
                                         
-                                        dwt[indx]=datiOutput[j][indx]; //printf("%d:iter %d, dwt[%d]=%d\n", omp_get_thread_num(), j, indx, (int)dwt[indx]);     
+                                        dwt[indx]=datiOutput[j][indx]; //printf("%d:iter %d, dwt[%d]=%d\r\n", omp_get_thread_num(), j, indx, (int)dwt[indx]);     
                                         
                                 }
-                                //printf("start wavelet transform\n");
+                                //printf("start wavelet transform\r\n");
                                 gsl_wavelet_transform (dwt, 1, window, ptr_workspace);
-                                //printf("finish wavelet transform\n");
-                                //printf("start energy computation\n");
+                                //printf("finish wavelet transform\r\n");
+                                //printf("start energy computation\r\n");
                                 calcolo_energia(dwt, energy_vector);
-                                //printf("finish energy computation\n");
+                                //printf("finish energy computation\r\n");
                                 
                                 
                                 
@@ -102,7 +102,7 @@ int main()
                                         
 				  energy_matrix[i][j]=energy_vector[i]; //printf("%d\t\t", (int)energy_vector[i]);
 				  x1[((j)*4)+i].index=((j)*4)+i+1;
-				  x1[((j)*4)+i].value=fDiv(energy_vector[i],100000.0f); //printf("\nX:%d\n", (int)(x1[((j)*4)+i].value));
+				  x1[((j)*4)+i].value=fDiv(energy_vector[i],100000.0f); //printf("\r\nX:%d\r\n", (int)(x1[((j)*4)+i].value));
                                 }
                                 
                                 
@@ -117,7 +117,7 @@ int main()
 			ptr_workspace = NULL;
 #if HWPERFFREE
 			perf_stop();
-			printf("FREE\n"); perf_print_all();
+			printf("FREE\r\n"); perf_print_all();
 #endif
                 
 		}//omp
@@ -127,7 +127,7 @@ int main()
                 
                 #if HWPERF_FUNC
 		perf_stop();
-		printf("END DWT\n"); perf_print_all();
+		printf("END DWT\r\n"); perf_print_all();
                 #endif
 
 		#if HWPERF
@@ -140,10 +140,10 @@ int main()
 		for(i=0;i<36;i++){
 		  sum +=  1000.0F*fAbs(x1[i].value);
 		}
-		printf("sum of x1: %d\n", (int) sum);
+		printf("sum of x1: %d\r\n", (int) sum);
 #endif
 
-                printf("\nENERGY MATRIX\n\n");
+                printf("\r\nENERGY MATRIX\r\n\r\n");
 
                 for(j=0;j<4;j++){
 		  for(i=0;i<components;i++){
@@ -151,7 +151,7 @@ int main()
 		    printf("%d\t", (int)energy_matrix[j][i]);
                                 
 		  }
-		  printf("\n");
+		  printf("\r\n");
                 }
                 
                 #if HWPERF
@@ -159,11 +159,11 @@ int main()
                 #endif
                 
                 //SVM: call the funcion svm_load_model , svm_init_data and svm_predict_values to perform the classification.
-		//                printf("start svm load model\n");
+		//                printf("start svm load model\r\n");
                 
                 #if HWPERF_FUNC
 		perf_stop();
-		printf("START SVM\n"); perf_print_all();
+		printf("START SVM\r\n"); perf_print_all();
 		perf_start();
                 #endif
 		
@@ -174,10 +174,10 @@ int main()
 #endif
 		float * dec_values = NULL;
 		dec_values = (float*) plp_alloc_l1((int)(sizeof(float)*model->nr_class*fDiv((model->nr_class-1),2)));
-		//printf("malloc %x \n",dec_values);
+		//printf("malloc %x \r\n",dec_values);
                 
 		svm_predict_values( x1, dec_values);
-		//		printf("finish svm predict\n");
+		//		printf("finish svm predict\r\n");
                 
 
 #if HWPERFFREE
@@ -189,11 +189,11 @@ int main()
 
 #if HWPERFFREE
 		perf_stop();
-		printf("FREE\n"); perf_print_all();
+		printf("FREE\r\n"); perf_print_all();
 #endif
 
                 #if HWPERF_FUNC
-		printf("END SVM\n");
+		printf("END SVM\r\n");
 		#endif
 		#if HWPERF
 		perf_end();

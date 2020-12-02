@@ -200,7 +200,7 @@ int main()
       // 1 iterations of enc+dec
       for (f=0;f<1;f++){
 
-	printf("Start Rijndael encryption/decryption\n\n",0,0,0,0);
+	printf("Start Rijndael encryption/decryption\r\n\r\n",0,0,0,0);
 
 #ifdef PROFILE
 	reset_timer();
@@ -226,15 +226,15 @@ int main()
           if (encoutbuf[i] != check_encoutbuf[i]) {
             error+=1;
 #ifdef DEBUG_OUTPUT
-	    printf("Error occured in encryption\n",0,0,0,0);
-            printf("encrypted: %d, expected: %d\n",encoutbuf[i],check_encoutbuf[i],0,0);
+	    printf("Error occured in encryption\r\n",0,0,0,0);
+            printf("encrypted: %d, expected: %d\r\n",encoutbuf[i],check_encoutbuf[i],0,0);
 #endif
           }
           if (decoutbuf[i] != check_decoutbuf[i]) {
             error+=1;
 #ifdef DEBUG_OUTPUT
-	    printf("Error occured in decryption\n",0,0,0,0);
-            printf("decrypted: %d, expected: %d\n",decoutbuf[i],check_decoutbuf[i],0,0);
+	    printf("Error occured in decryption\r\n",0,0,0,0);
+            printf("decrypted: %d, expected: %d\r\n",decoutbuf[i],check_decoutbuf[i],0,0);
 #endif
           }
         }
@@ -242,9 +242,9 @@ int main()
       }
       
       if (error == 0)
-	printf("== test: %s -> success, nr. of errors: %d, execution time: %d\n", "rijndael", 0, get_time());
+	printf("== test: %s -> success, nr. of errors: %d, execution time: %d\r\n", "rijndael", 0, get_time());
       else
-	printf("== test: %s -> fail, nr. of errors: %d, execution time: %d\n", "rijndael", 1, get_time());
+	printf("== test: %s -> fail, nr. of errors: %d, execution time: %d\r\n", "rijndael", 1, get_time());
       
       perf_print_all();
     }
@@ -294,23 +294,23 @@ void compute_aes(){
 
           // ENCRYPTION
 #ifdef DEBUG_OUTPUT
-	  printf("Set encryption key\n",0,0,0,0);
+	  printf("Set encryption key\r\n",0,0,0,0);
 #endif
           set_key(key, key_len, enc, ctx);
 #ifdef DEBUG_OUTPUT
-	  printf("Key: %d\n\n",key,0,0,0);
-          printf("Start encryption\n\n",0,0,0,0);
+	  printf("Key: %d\r\n\r\n",key,0,0,0);
+          printf("Start encryption\r\n\r\n",0,0,0,0);
 #endif
           err = encfile(ctx, encoutbuf);
 
           // DECRYPTION
 #ifdef DEBUG_OUTPUT          
-	  printf("Set decryption key\n",0,0,0,0);
+	  printf("Set decryption key\r\n",0,0,0,0);
 #endif
           set_key(key, key_len, dec, ctx);
 #ifdef DEBUG_OUTPUT
-          printf("Key: %d\n\n",key,0,0,0);
-          printf("Start decryption\n",0,0,0,0);
+          printf("Key: %d\r\n\r\n",key,0,0,0);
+          printf("Start decryption\r\n",0,0,0,0);
 #endif
 	  err = decfile(ctx, decoutbuf);
 

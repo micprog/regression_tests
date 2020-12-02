@@ -101,7 +101,7 @@ static inline unsigned int pulp_tryread(const unsigned int* const addr)
 static inline int pulp_tryread_prefetch(const unsigned int* const addr)
 {
   #if DEBUG_TRYX == 1
-    printf("read-prefetch of address 0x%X\n",(unsigned)addr);
+    printf("read-prefetch of address 0x%X\r\n",(unsigned)addr);
   #endif
 
   pulp_tryx_set_prefetch();
@@ -114,7 +114,7 @@ static inline int pulp_tryread_prefetch(const unsigned int* const addr)
 
   if (pulp_tryx_has_slverr()) {
     #if DEBUG_TRYX == 1
-      printf("miss on address 0x%X\n",(unsigned)addr);
+      printf("miss on address 0x%X\r\n",(unsigned)addr);
     #endif
     return 1;
   }
@@ -150,7 +150,7 @@ static inline void pulp_trywrite(unsigned int* const addr, const unsigned int va
 static inline int pulp_trywrite_prefetch(unsigned int* const addr)
 {
   #if DEBUG_TRYX == 1
-    printf("write-prefetch of address 0x%X\n",(unsigned)addr);
+    printf("write-prefetch of address 0x%X\r\n",(unsigned)addr);
   #endif
 
   pulp_tryx_set_prefetch();
@@ -163,7 +163,7 @@ static inline int pulp_trywrite_prefetch(unsigned int* const addr)
 
   if (pulp_tryx_has_slverr()) {
     #if DEBUG_TRYX == 1
-      printf("miss on address 0x%X\n",(unsigned)addr);
+      printf("miss on address 0x%X\r\n",(unsigned)addr);
     #endif
     return 1;
   }

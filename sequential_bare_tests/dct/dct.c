@@ -65,7 +65,7 @@ int main()
         }
 
         stop_timer();
-        printf("Cycles: %d\n", get_time());
+        printf("Cycles: %d\r\n", get_time());
 
     }
 

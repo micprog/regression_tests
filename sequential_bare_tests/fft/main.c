@@ -68,18 +68,18 @@ int main() {
     for(i = 0; i < 512; i++) {
       if((buffer_out[i] & 0xFFFF) != (g_expresp[i] & 0xFFFF)) {
         errors++;
-        printf("Error: Is %X, expected %X, at %X\n", buffer_out[i], g_expresp[i], &g_expresp[i]);
+        printf("Error: Is %X, expected %X, at %X\r\n", buffer_out[i], g_expresp[i], &g_expresp[i]);
       }
     }
 
-    printf("#Cycles 0, %d\n", get_time());
+    printf("#Cycles 0, %d\r\n", get_time());
 
     if(errors) {
-      printf("Core %d, %d errors found\n", core_id, errors);
-      printf("NOT OK!!!!!\n");
+      printf("Core %d, %d errors found\r\n", core_id, errors);
+      printf("NOT OK!!!!!\r\n");
     } else {
-      printf("Core %d, OK\n", core_id);
-      printf("OOOOOOK!!!!!!\n");
+      printf("Core %d, OK\r\n", core_id);
+      printf("OOOOOOK!!!!!!\r\n");
     }
 
   }

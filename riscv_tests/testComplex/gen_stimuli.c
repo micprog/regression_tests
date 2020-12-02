@@ -26,7 +26,7 @@ int main()
 {
 
    FILE * fp = fopen ("number_of_stimuli.h","w");
-   fprintf(fp, "#ifndef NUM_STIM\n#define NUM_STIM\n #define N %d\n#endif",N );
+   fprintf(fp, "#ifndef NUM_STIM\r\n#define NUM_STIM\r\n #define N %d\r\n#endif",N );
    fclose(fp);
    //generate pv_complex
    pv_complex(0,"pv_complex_stimuli.h", "PVCOMPLEX");
@@ -75,8 +75,8 @@ void pv_complex(int div, char* fileName, char* ifdef_tag)
 
         fp = fopen (fileName,"w");
 
-        fprintf(fp, "#ifndef %s\n",ifdef_tag);
-        fprintf(fp, "#define %s\n",ifdef_tag);
+        fprintf(fp, "#ifndef %s\r\n",ifdef_tag);
+        fprintf(fp, "#define %s\r\n",ifdef_tag);
 
         if(div == 0)
                 str[0] = 0;
@@ -97,75 +97,75 @@ void pv_complex(int div, char* fileName, char* ifdef_tag)
                 strcpy(strdot,".div8");
 
 
-        fprintf(fp, "int cplx_opA%s[] = {\n",str);
+        fprintf(fp, "int cplx_opA%s[] = {\r\n",str);
         for(i=0;i<N;i++){
             a0[i] = rand();
             a1[i] = rand();
             int a = (a1[i] << 16) | (a0[i] & 0xFFFF);
-            fprintf(fp, "0x%x,\n",a);
+            fprintf(fp, "0x%x,\r\n",a);
         }
-        fprintf(fp, "};\n\n");
+        fprintf(fp, "};\r\n\r\n");
 
-        fprintf(fp, "int cplx_opB%s[] = {\n",str);
+        fprintf(fp, "int cplx_opB%s[] = {\r\n",str);
         for(i=0;i<N;i++){
             b0[i] = rand();
             b1[i] = rand();
             int b = (b1[i] << 16) | (b0[i] & 0xFFFF);
-            fprintf(fp, "0x%x,\n",b);
+            fprintf(fp, "0x%x,\r\n",b);
         }
-        fprintf(fp, "};\n\n");
+        fprintf(fp, "};\r\n\r\n");
 
-        fprintf(fp, "int subrotmj_opC%s[] = {\n",str);
+        fprintf(fp, "int subrotmj_opC%s[] = {\r\n",str);
 
         for(i=0;i<N;i++)
         {
             r1    = (short)(((b0[i] - a0[i]) & 0xFFFF)) >> div;
             r0    = (short)(((a1[i] - b1[i]) & 0xFFFF)) >> div;
             c[i]  = (r1 << 16) | (r0 & 0xFFFF);
-            fprintf(fp, "0x%x,\n",c[i]);
+            fprintf(fp, "0x%x,\r\n",c[i]);
         }
-        fprintf(fp, "};\n\n");
+        fprintf(fp, "};\r\n\r\n");
 
         if(div==0){
-            fprintf(fp, "int cplxconj_opC%s[] = {\n",str);
+            fprintf(fp, "int cplxconj_opC%s[] = {\r\n",str);
             for(i=0;i<N;i++)
             {
                 r0    = a0[i];
                 r1    = -a1[i];
                 c[i]  = (r1 << 16) | (r0 & 0xFFFF);
-                fprintf(fp, "0x%x,\n",c[i]);
+                fprintf(fp, "0x%x,\r\n",c[i]);
             }
 
-            fprintf(fp, "};\n\n");
+            fprintf(fp, "};\r\n\r\n");
         }
 
         if(div!=0)
         {
-            fprintf(fp, "int cplxadd_opC%s[] = {\n",str);
+            fprintf(fp, "int cplxadd_opC%s[] = {\r\n",str);
             for(i=0;i<N;i++)
             {
                 r0    = (short)(((a0[i] + b0[i]) & 0xFFFF)) >> div;
                 r1    = (short)(((a1[i] + b1[i]) & 0xFFFF)) >> div;
                 c[i]  = (r1 << 16) | (r0 & 0xFFFF);
-                fprintf(fp, "0x%x,\n", c[i]);
+                fprintf(fp, "0x%x,\r\n", c[i]);
             }
 
-            fprintf(fp, "};\n\n");
-            //fprintf(fp, "\"pv.add.h%s \%[c], \%[a], \%[b]\"\n", str);
-            fprintf(fp, "int cplxsub_opC%s[] = {\n",str);
+            fprintf(fp, "};\r\n\r\n");
+            //fprintf(fp, "\"pv.add.h%s \%[c], \%[a], \%[b]\"\r\n", str);
+            fprintf(fp, "int cplxsub_opC%s[] = {\r\n",str);
             for(i=0;i<N;i++)
             {
                 r0    = (short)(((a0[i] - b0[i]) & 0xFFFF)) >> div;
                 r1    = (short)(((a1[i] - b1[i]) & 0xFFFF)) >> div;
                 c[i]  = (r1 << 16) | (r0 & 0xFFFF);
-                fprintf(fp, "0x%x,\n",c[i]);
+                fprintf(fp, "0x%x,\r\n",c[i]);
             }
 
-            fprintf(fp, "};\n\n");
-            //printf("\"pv.sub.h%s \%[c], \%[a], \%[b]\"\n", str);
+            fprintf(fp, "};\r\n\r\n");
+            //printf("\"pv.sub.h%s \%[c], \%[a], \%[b]\"\r\n", str);
         }
 
-        fprintf(fp, "#endif\n");
+        fprintf(fp, "#endif\r\n");
         fclose(fp);
         return;
 }
@@ -184,8 +184,8 @@ void cplxmul(int div, int r, char* fileName, char* ifdef_tag)
     srand((unsigned) time(&t));
 
     fp = fopen (fileName,"w");
-    fprintf(fp, "#ifndef %s\n",ifdef_tag);
-    fprintf(fp, "#define %s\n",ifdef_tag);
+    fprintf(fp, "#ifndef %s\r\n",ifdef_tag);
+    fprintf(fp, "#define %s\r\n",ifdef_tag);
     if(div == 15)
            str[0] = 0;
     else if (div == 16)
@@ -196,32 +196,32 @@ void cplxmul(int div, int r, char* fileName, char* ifdef_tag)
         strcpy(str,"div8");
 
 
-    fprintf(fp,"int cplxmul_opA%s%s[] = {\n",r? "r_" : "i_", str);
+    fprintf(fp,"int cplxmul_opA%s%s[] = {\r\n",r? "r_" : "i_", str);
     for(i=0;i<N;i++){
         a0[i] = rand();
         a1[i] = rand();
         int a = (a1[i] << 16) | (a0[i] & 0xFFFF);
-        fprintf(fp,"0x%x,\n",a);
+        fprintf(fp,"0x%x,\r\n",a);
     }
-    fprintf(fp,"};\n\n");
+    fprintf(fp,"};\r\n\r\n");
 
-    fprintf(fp,"int cplxmul_opB%s%s[] = {\n",r? "r_" : "i_", str);
+    fprintf(fp,"int cplxmul_opB%s%s[] = {\r\n",r? "r_" : "i_", str);
     for(i=0;i<N;i++){
         b0[i] = rand();
         b1[i] = rand();
         int b = (b1[i] << 16) | (b0[i] & 0xFFFF);
-        fprintf(fp,"0x%x,\n",b);
+        fprintf(fp,"0x%x,\r\n",b);
     }
-    fprintf(fp,"};\n\n");
+    fprintf(fp,"};\r\n\r\n");
 
-    fprintf(fp,"int cplxmul_opC%s%s[] = {\n",r? "r_" : "i_", str);
+    fprintf(fp,"int cplxmul_opC%s%s[] = {\r\n",r? "r_" : "i_", str);
     for(i=0;i<N;i++){
         c[i] = rand();
-        fprintf(fp,"0x%x,\n",c[i]);
+        fprintf(fp,"0x%x,\r\n",c[i]);
     }
-    fprintf(fp,"};\n\n");
+    fprintf(fp,"};\r\n\r\n");
 
-    fprintf(fp,"int cplxmul_opCRes%s%s[] = {\n",r? "r_" : "i_", str);
+    fprintf(fp,"int cplxmul_opCRes%s%s[] = {\r\n",r? "r_" : "i_", str);
 
     for(i=0;i<N;i++)
     {
@@ -229,18 +229,18 @@ void cplxmul(int div, int r, char* fileName, char* ifdef_tag)
         r0       = a0[i]*b0[i];
         r1       = a1[i]*b1[i];
         cRes[i]  = (r0 - r1) >> div;
-        fprintf(fp,"0x%x,\n",(c[i] & 0XFFFF0000) | (cRes[i] & 0xFFFF));
+        fprintf(fp,"0x%x,\r\n",(c[i] & 0XFFFF0000) | (cRes[i] & 0xFFFF));
         } else {
         r0       = a0[i]*b1[i];
         r1       = a1[i]*b0[i];
         cRes[i]  = (r0 + r1) >> div;
-        fprintf(fp,"0x%x,\n",((cRes[i] & 0xFFFF) << 16) | (c[i] & 0xFFFF));
+        fprintf(fp,"0x%x,\r\n",((cRes[i] & 0xFFFF) << 16) | (c[i] & 0xFFFF));
         }
      }
-     fprintf(fp,"};\n\n");
+     fprintf(fp,"};\r\n\r\n");
 
-    //printf("\"pv.cplxmul.h.%s%s \%[c], \%[a], \%[b]\"\n",r ? "r" : "i", str);
-    fprintf(fp, "#endif\n");
+    //printf("\"pv.cplxmul.h.%s%s \%[c], \%[a], \%[b]\"\r\n",r ? "r" : "i", str);
+    fprintf(fp, "#endif\r\n");
     fclose(fp);
 
     return;
@@ -261,41 +261,41 @@ void cplxbitman(char* fileName, char* ifdef_tag)
         fp = fopen (fileName,"w");
 
 
-        fprintf(fp, "#ifndef %s\n",ifdef_tag);
-        fprintf(fp, "#define %s\n",ifdef_tag);
+        fprintf(fp, "#ifndef %s\r\n",ifdef_tag);
+        fprintf(fp, "#define %s\r\n",ifdef_tag);
 
-        fprintf(fp,"int cplxbitman_opA[] = {\n");
+        fprintf(fp,"int cplxbitman_opA[] = {\r\n");
 
         for(i=0;i<N;i++){
             a0[i] = rand();
             a1[i] = rand();
             int a = (a1[i] << 16) | (a0[i] & 0xFFFF);
-            fprintf(fp,"0x%x,\n",a);
+            fprintf(fp,"0x%x,\r\n",a);
         }
-        fprintf(fp,"};\n\n");
+        fprintf(fp,"};\r\n\r\n");
 
-        fprintf(fp,"int cplxbitman_opB[] = {\n");
+        fprintf(fp,"int cplxbitman_opB[] = {\r\n");
 
         for(i=0;i<N;i++){
            b0[i] = rand();
            b1[i] = rand();
            int b = (b1[i] << 16) | (b0[i] & 0xFFFF);
-           fprintf(fp,"0x%x,\n",b);
+           fprintf(fp,"0x%x,\r\n",b);
         }
-        fprintf(fp,"};\n\n");
+        fprintf(fp,"};\r\n\r\n");
 
-        fprintf(fp,"int cplxpack_opC[] = {\n");
+        fprintf(fp,"int cplxpack_opC[] = {\r\n");
 
         for(i=0;i<N;i++)
         {
                 r0    = b1[i];
                 r1    = a1[i];
                 c[i]  = (r1 << 16) | (r0 & 0xFFFF);
-                fprintf(fp,"0x%x,\n",c[i]);
+                fprintf(fp,"0x%x,\r\n",c[i]);
          }
-        fprintf(fp,"};\n\n");
+        fprintf(fp,"};\r\n\r\n");
 
-        fprintf(fp, "#endif\n");
+        fprintf(fp, "#endif\r\n");
         fclose(fp);
 
         return;

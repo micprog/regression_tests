@@ -53,7 +53,7 @@ void check_bubbleSort(testresult_t *result, void (*start)(), void (*stop)()) {
   int i,j;
   int n = N;
   
-  printf("Start bubblesort\n");
+  printf("Start bubblesort\r\n");
   
   start();
   
@@ -76,7 +76,7 @@ void check_bubbleSort(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for (i=0;i<n;i++) {
     if (array[N-1-i] != 2*n-i) {
-      printf("expected: %d, actual: %d\n",2*n-i,array[N-1-i]);
+      printf("expected: %d, actual: %d\r\n",2*n-i,array[N-1-i]);
       result->errors++;
     }
   }

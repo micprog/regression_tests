@@ -38,7 +38,7 @@ void test_init_int(const char* filename) {
   g_errors = 0;
 
 #ifdef OR10N_TESTS_PRINTF
-  printf("Starting %s\n", filename);
+  printf("Starting %s\r\n", filename);
 #endif
 }
 
@@ -48,7 +48,7 @@ void test_check(const char* str, uint32_t act, uint32_t exp) {
   if(act != exp) {
     g_errors++;
 #ifdef OR10N_TESTS_PRINTF
-    printf("%s: Is %X, expected %X\n", str, act, exp);
+    printf("%s: Is %X, expected %X\r\n", str, act, exp);
 #endif
   }
 }
@@ -59,7 +59,7 @@ void test_check_flags(const char* str, uint32_t spr, uint32_t exp, uint32_t flag
   if((spr & flags) != (exp & flags)) {
     g_errors++;
 #ifdef OR10N_TESTS_PRINTF
-    printf("%s: SPR is %X, is %X, expected %X\n", str, spr, spr & flags, exp & flags);
+    printf("%s: SPR is %X, is %X, expected %X\r\n", str, spr, spr & flags, exp & flags);
 #endif
   }
 }
@@ -71,9 +71,9 @@ void test_check_overflow(const char* str, uint32_t spr, uint32_t exp) {
     g_errors++;
 #ifdef OR10N_TESTS_PRINTF
     if(exp & SR_OVERFLOW)
-      printf("%s: Overflow should have been set\n", str);
+      printf("%s: Overflow should have been set\r\n", str);
     else
-      printf("%s: Overflow should not have been set\n", str);
+      printf("%s: Overflow should not have been set\r\n", str);
 #endif
   }
 }
@@ -85,9 +85,9 @@ void test_check_carry(const char* str, uint32_t spr, uint32_t exp) {
     g_errors++;
 #ifdef OR10N_TESTS_PRINTF
     if(exp & SR_CARRY)
-      printf("%s: Carry should have been set\n", str);
+      printf("%s: Carry should have been set\r\n", str);
     else
-      printf("%s: Carry should not have been set\n", str);
+      printf("%s: Carry should not have been set\r\n", str);
 #endif
   }
 }
@@ -98,12 +98,12 @@ unsigned int test_get_num_errors(void) {
 
 void test_report(void) {
 #ifdef OR10N_TESTS_PRINTF
-  printf("%d of %d checks failed\n", g_errors, g_num_checks);
+  printf("%d of %d checks failed\r\n", g_errors, g_num_checks);
 
   if(g_errors == 0)
-    printf ("OOOOOOK!!!!!!\n");
+    printf ("OOOOOOK!!!!!!\r\n");
   else
-    printf("NOT OK!!!!!\n");
+    printf("NOT OK!!!!!\r\n");
 #endif
 }
 

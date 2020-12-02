@@ -105,7 +105,7 @@ void test_init(testresult_t *result, void (*start)(), void (*stop)()) {
                 "mv x17, %[tb_errors];"
                 "ebreak" :: [current] "r" (&testcase_current[coreid]), [tb_errors] "r" (&tb_errors[coreid]));
 
-  printf("Core %d finished its initialization\n",coreid );
+  printf("Core %d finished its initialization\r\n",coreid );
 
   synch_barrier();
 }

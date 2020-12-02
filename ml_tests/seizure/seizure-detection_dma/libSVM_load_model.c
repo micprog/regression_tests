@@ -27,10 +27,10 @@ void svm_load_model()
 	perf_start();
         #endif
 	model = (struct svm_model*) plp_alloc_l1((int)(sizeof(struct svm_model)));
-	//printf("malloc %x \n",model);
+	//printf("malloc %x \r\n",model);
         #if HWPERFMALLOC
 	perf_stop();
-	printf("STOP alloc\n"); perf_print_all();
+	printf("STOP alloc\r\n"); perf_print_all();
         #endif
         model->param.svm_type = 0;
         model->param.kernel_type = 2;
@@ -52,10 +52,10 @@ void svm_load_model()
 	model->nSV = (int*)plp_alloc_l1((int)(sizeof(int)*model->nr_class));
         model->sv_coef = (float**) plp_alloc_l1((int)(sizeof(float)*m));
         model->SV = (svm_node**) plp_alloc_l1((int)(sizeof(svm_node)*l));
-	//printf("malloc %x %x %x %x %x \n",model->rho,model->label,model->nSV,model->sv_coef,model->SV);
+	//printf("malloc %x %x %x %x %x \r\n",model->rho,model->label,model->nSV,model->sv_coef,model->SV);
         #if HWPERFMALLOC
 	perf_stop();
-	printf("STOP alloc\n"); perf_print_all();
+	printf("STOP alloc\r\n"); perf_print_all();
         #endif
 	model->rho[0] = 0.138475F;
  	model->label[0] = 0;
@@ -64,6 +64,6 @@ void svm_load_model()
 	model->nSV[0] = 161;
         model->nSV[1] = 154;
 #ifdef DEBUG	
-	printf("load model %d \n", (int) (1000.0F *model->param.gamma));
+	printf("load model %d \r\n", (int) (1000.0F *model->param.gamma));
 #endif
         }

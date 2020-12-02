@@ -72,7 +72,7 @@ void check_add(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check add
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_add_act)/4); i++) {
-    asm volatile ("add %[c], %[a], %[b]\n"
+    asm volatile ("add %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_add_act[i])
                   : [a] "r"  (g_add_a[i]), [b] "r" (g_add_b[i]));
 
@@ -83,7 +83,7 @@ void check_add(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check addi
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_addi_act)/4); i++) {
-    asm volatile ("addi %[c], %[a], 100\n"
+    asm volatile ("addi %[c], %[a], 100\r\n"
                   : [c] "+r" (g_addi_act[i])
                   : [a] "r"  (g_addi_a[i]));
 
@@ -98,7 +98,7 @@ void check_sub(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check sub
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_sub_act)/4); i++) {
-    asm volatile ("sub %[c], %[a], %[b]\n"
+    asm volatile ("sub %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_sub_act[i])
                   : [a] "r"  (g_sub_a[i]), [b] "r" (g_sub_b[i]));
 
@@ -114,7 +114,7 @@ void check_logic(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check and
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_and_act)/4); i++) {
-    asm volatile ("and %[c], %[a], %[b]\n"
+    asm volatile ("and %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_and_act[i])
                   : [a] "r"  (g_and_a[i]), [b] "r" (g_and_b[i]));
 
@@ -125,7 +125,7 @@ void check_logic(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check or
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_or_act)/4); i++) {
-    asm volatile ("or %[c], %[a], %[b]\n"
+    asm volatile ("or %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_or_act[i])
                   : [a] "r"  (g_or_a[i]), [b] "r" (g_or_b[i]));
 
@@ -136,7 +136,7 @@ void check_logic(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check xor
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_xor_act)/4); i++) {
-    asm volatile ("xor %[c], %[a], %[b]\n"
+    asm volatile ("xor %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_xor_act[i])
                   : [a] "r"  (g_xor_a[i]), [b] "r" (g_xor_b[i]));
 
@@ -151,7 +151,7 @@ void check_logic_imm(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   // Check andi
   //-----------------------------------------------------------------
-  asm volatile ("andi %[c], %[a], 0x06D6\n"
+  asm volatile ("andi %[c], %[a], 0x06D6\r\n"
                 : [c] "=r" (act)
                 : [a] "r"  (0xABCDABCD));
 
@@ -160,7 +160,7 @@ void check_logic_imm(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   // Check ori
   //-----------------------------------------------------------------
-  asm volatile ("ori %[c], %[a], 0x06D6\n"
+  asm volatile ("ori %[c], %[a], 0x06D6\r\n"
                 : [c] "=r" (act)
                 : [a] "r"  (0xABCD0142));
 
@@ -169,7 +169,7 @@ void check_logic_imm(testresult_t *result, void (*start)(), void (*stop)()) {
   //-----------------------------------------------------------------
   // Check xori
   //-----------------------------------------------------------------
-  asm volatile ("xori %[c], %[a], 0x0624\n"
+  asm volatile ("xori %[c], %[a], 0x0624\r\n"
                 : [c] "=r" (act)
                 : [a] "r"  (0x01020304));
 
@@ -184,7 +184,7 @@ void check_shifts(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check sll
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_sll_act)/4); i++) {
-    asm volatile ("sll %[c], %[a], %[b]\n"
+    asm volatile ("sll %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_sll_act[i])
                   : [a] "r"  (g_sll_a[i]), [b] "r" (g_sll_b[i]));
 
@@ -195,7 +195,7 @@ void check_shifts(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check srl
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_srl_act)/4); i++) {
-    asm volatile ("srl %[c], %[a], %[b]\n"
+    asm volatile ("srl %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_srl_act[i])
                   : [a] "r"  (g_srl_a[i]), [b] "r" (g_srl_b[i]));
 
@@ -206,7 +206,7 @@ void check_shifts(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check sra
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_sra_act)/4); i++) {
-    asm volatile ("sra %[c], %[a], %[b]\n"
+    asm volatile ("sra %[c], %[a], %[b]\r\n"
                   : [c] "+r" (g_sra_act[i])
                   : [a] "r"  (g_sra_a[i]), [b] "r" (g_sra_b[i]));
 
@@ -221,7 +221,7 @@ void check_shifts_imm(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check slli
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_slli_act)/4); i++) {
-    asm volatile ("slli %[c], %[a], 10\n"
+    asm volatile ("slli %[c], %[a], 10\r\n"
                   : [c] "+r" (g_slli_act[i])
                   : [a] "r"  (g_slli_a[i]));
 
@@ -232,7 +232,7 @@ void check_shifts_imm(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check srli
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_srli_act)/4); i++) {
-    asm volatile ("srli %[c], %[a], 9\n"
+    asm volatile ("srli %[c], %[a], 9\r\n"
                   : [c] "+r" (g_srli_act[i])
                   : [a] "r"  (g_srli_a[i]));
 
@@ -243,7 +243,7 @@ void check_shifts_imm(testresult_t *result, void (*start)(), void (*stop)()) {
   // Check srai
   //-----------------------------------------------------------------
   for(i = 0; i < (sizeof(g_srai_act)/4); i++) {
-    asm volatile ("srai %[c], %[a], 21\n"
+    asm volatile ("srai %[c], %[a], 21\r\n"
                   : [c] "+r" (g_srai_act[i])
                   : [a] "r"  (g_srai_a[i]));
 

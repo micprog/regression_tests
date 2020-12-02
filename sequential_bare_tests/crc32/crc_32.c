@@ -132,6 +132,6 @@ void check_crc32(testresult_t *result, void (*start)(), void (*stop)()) {
 
   if (output != check_output){
     result->errors++;
-    printf("Error:\nExpected result: %d does not match actual results: %d\n",check_output,output);
+    printf("Error:\r\nExpected result: %d does not match actual results: %d\r\n",check_output,output);
   }
 }

@@ -73,7 +73,7 @@ void check_pv_cplxmul_real(testresult_t *result, void (*start)(), void (*stop)()
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.r %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.r %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCr_[i])
                   : [a] "r"  (cplxmul_opAr_[i]), [b] "r" (cplxmul_opBr_[i]));
 
@@ -86,7 +86,7 @@ void check_pv_cplxmul_real(testresult_t *result, void (*start)(), void (*stop)()
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.r.div2 %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.r.div2 %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCr_div2[i])
                   : [a] "r"  (cplxmul_opAr_div2[i]), [b] "r" (cplxmul_opBr_div2[i]));
 
@@ -99,7 +99,7 @@ void check_pv_cplxmul_real(testresult_t *result, void (*start)(), void (*stop)()
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.r.div4 %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.r.div4 %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCr_div4[i])
                   : [a] "r"  (cplxmul_opAr_div4[i]), [b] "r" (cplxmul_opBr_div4[i]));
 
@@ -113,7 +113,7 @@ void check_pv_cplxmul_real(testresult_t *result, void (*start)(), void (*stop)()
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.r.div8 %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.r.div8 %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCr_div8[i])
                   : [a] "r"  (cplxmul_opAr_div8[i]), [b] "r" (cplxmul_opBr_div8[i]));
 
@@ -136,7 +136,7 @@ void check_pv_cplxmul_img(testresult_t *result, void (*start)(), void (*stop)())
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.i %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.i %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCi_[i])
                   : [a] "r"  (cplxmul_opAi_[i]), [b] "r" (cplxmul_opBi_[i]));
 
@@ -149,7 +149,7 @@ void check_pv_cplxmul_img(testresult_t *result, void (*start)(), void (*stop)())
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.i.div2 %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.i.div2 %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCi_div2[i])
                   : [a] "r"  (cplxmul_opAi_div2[i]), [b] "r" (cplxmul_opBi_div2[i]));
 
@@ -162,7 +162,7 @@ void check_pv_cplxmul_img(testresult_t *result, void (*start)(), void (*stop)())
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.i.div4 %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.i.div4 %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCi_div4[i])
                   : [a] "r"  (cplxmul_opAi_div4[i]), [b] "r" (cplxmul_opBi_div4[i]));
 
@@ -176,7 +176,7 @@ void check_pv_cplxmul_img(testresult_t *result, void (*start)(), void (*stop)())
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxmul.h.i.div8 %[c], %[a], %[b]\n"
+    asm volatile ("pv.cplxmul.h.i.div8 %[c], %[a], %[b]\r\n"
                   : [c] "+r" (cplxmul_opCi_div8[i])
                   : [a] "r"  (cplxmul_opAi_div8[i]), [b] "r" (cplxmul_opBi_div8[i]));
 
@@ -200,7 +200,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.subrotmj.h %[c], %[a], %[b]\n"
+    asm volatile ("pv.subrotmj.h %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opA[i]), [b] "r" (cplx_opB[i]));
 
@@ -213,7 +213,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.subrotmj.h.div2 %[c], %[a], %[b]\n"
+    asm volatile ("pv.subrotmj.h.div2 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv2[i]), [b] "r" (cplx_opBdiv2[i]));
 
@@ -226,7 +226,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.subrotmj.h.div4 %[c], %[a], %[b]\n"
+    asm volatile ("pv.subrotmj.h.div4 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv4[i]), [b] "r" (cplx_opBdiv4[i]));
 
@@ -239,7 +239,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.subrotmj.h.div8 %[c], %[a], %[b]\n"
+    asm volatile ("pv.subrotmj.h.div8 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv8[i]), [b] "r" (cplx_opBdiv8[i]));
 
@@ -252,7 +252,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.cplxconj.h %[c], %[a]\n"
+    asm volatile ("pv.cplxconj.h %[c], %[a]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opA[i]));
 
@@ -265,7 +265,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.add.h.div2 %[c], %[a], %[b]\n"
+    asm volatile ("pv.add.h.div2 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv2[i]), [b] "r" (cplx_opBdiv2[i]));
 
@@ -278,7 +278,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.add.h.div4 %[c], %[a], %[b]\n"
+    asm volatile ("pv.add.h.div4 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv4[i]), [b] "r" (cplx_opBdiv4[i]));
 
@@ -291,7 +291,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.add.h.div8 %[c], %[a], %[b]\n"
+    asm volatile ("pv.add.h.div8 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv8[i]), [b] "r" (cplx_opBdiv8[i]));
 
@@ -305,7 +305,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.sub.h.div2 %[c], %[a], %[b]\n"
+    asm volatile ("pv.sub.h.div2 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv2[i]), [b] "r" (cplx_opBdiv2[i]));
 
@@ -318,7 +318,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.sub.h.div4 %[c], %[a], %[b]\n"
+    asm volatile ("pv.sub.h.div4 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv4[i]), [b] "r" (cplx_opBdiv4[i]));
 
@@ -331,7 +331,7 @@ void check_pv_complex(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.sub.h.div8 %[c], %[a], %[b]\n"
+    asm volatile ("pv.sub.h.div8 %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplx_opAdiv8[i]), [b] "r" (cplx_opBdiv8[i]));
 
@@ -354,7 +354,7 @@ void check_pv_bitman(testresult_t *result, void (*start)(), void (*stop)()) {
 
   for(i=0;i<N;i++)
   {
-    asm volatile ("pv.pack.h.h %[c], %[a], %[b]\n"
+    asm volatile ("pv.pack.h.h %[c], %[a], %[b]\r\n"
                   : [c] "=r" (tmp_result[i])
                   : [a] "r"  (cplxbitman_opA[i]), [b] "r" (cplx_opB[i]));
 

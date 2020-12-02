@@ -225,7 +225,7 @@ int tx_buffer_cmd_read_WIP[BUFFER_SIZE] = {SPI_CMD_CFG(1,0,0),
 int u = 3; //--- select spi3
 
 
-printf("[%d, %d] Start test flash page programming over qspi %d\n",  get_cluster_id(), get_core_id(),u);
+printf("[%d, %d] Start test flash page programming over qspi %d\r\n",  get_cluster_id(), get_core_id(),u);
 
 configure_gpio(28,OUT,1); //--- using this GPIO as CS for the flash
 set_gpio(28,1);
@@ -236,7 +236,7 @@ plp_udma_cg_set(plp_udma_cg_get() | (0xffffffff));
 //--- get the base address of the SPIMx udma channels
 unsigned int udma_spim_channel_base = hal_udma_channel_base(UDMA_CHANNEL_ID(ARCHI_UDMA_SPIM_ID(u)));
 set_gpio(28,0);
-printf("uDMA spim%d base channel address %8x\n", u,udma_spim_channel_base);
+printf("uDMA spim%d base channel address %8x\r\n", u,udma_spim_channel_base);
 set_gpio(28,1);
 
 //--- write the flash page
@@ -255,7 +255,7 @@ wait_cycles(50000);
 
 for (int i = 0; i < TEST_PAGE_SIZE; ++i)
 {
-  printf("read %8x, expected %8x \n",rx_page[i],page[i+4]);
+  printf("read %8x, expected %8x \r\n",rx_page[i],page[i+4]);
   if (rx_page[i] != page[i+4])
   {
     error++;
@@ -264,9 +264,9 @@ for (int i = 0; i < TEST_PAGE_SIZE; ++i)
 
   if (error == 0)
   {
-    printf("TEST SUCCEDED\n");
+    printf("TEST SUCCEDED\r\n");
   }else{
-    printf("TEST FAILED with %d errors\n", error);
+    printf("TEST FAILED with %d errors\r\n", error);
   }
 
   return error;

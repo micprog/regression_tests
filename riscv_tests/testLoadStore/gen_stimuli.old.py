@@ -25,31 +25,31 @@ def tohex32_hi(val):
     return hex((val + (1 << 32)) % (1 << 32))
 
 def write_uint32_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%08X,\n' % (v & 0xFFFFFFFF))
-    f.write('};\n\n')
+        f.write('0x%08X,\r\n' % (v & 0xFFFFFFFF))
+    f.write('};\r\n\r\n')
     return
 
 def write_uint32_hi_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%08X,\n' % ((v >> 32) & 0xFFFFFFFF))
-    f.write('};\n\n')
+        f.write('0x%08X,\r\n' % ((v >> 32) & 0xFFFFFFFF))
+    f.write('};\r\n\r\n')
     return
 
 def write_int32_arr(f, name, arr):
-    f.write('int %s[] = {\n' % name)
+    f.write('int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('%s,\n' % (tohex32(v)))
-    f.write('};\n\n')
+        f.write('%s,\r\n' % (tohex32(v)))
+    f.write('};\r\n\r\n')
     return
 
 def write_int32_hi_arr(f, name, arr):
-    f.write('int %s[] = {\n' % name)
+    f.write('int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('%s,\n' % (tohex32_hi(v)))
-    f.write('};\n\n')
+        f.write('%s,\r\n' % (tohex32_hi(v)))
+    f.write('};\r\n\r\n')
     return
 
 def write_stimuli(f, prefix, ops_a, ops_b, res):

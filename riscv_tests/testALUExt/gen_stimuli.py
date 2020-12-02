@@ -14,10 +14,10 @@ import random
 # specific language governing permissions and limitations under the License.
 
 def write_hex32_arr(f, name, arr):
-    f.write('unsigned int %s[] = {\n' % name)
+    f.write('unsigned int %s[] = {\r\n' % name)
     for v in arr:
-        f.write('0x%08X,\n' % (v & 0xFFFFFFFF))
-    f.write('};\n\n')
+        f.write('0x%08X,\r\n' % (v & 0xFFFFFFFF))
+    f.write('};\r\n\r\n')
     return
 
 

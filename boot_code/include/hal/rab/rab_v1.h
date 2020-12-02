@@ -280,9 +280,9 @@ int config_rab_slice(const virt_addr_t begin, const virt_addr_t end,
         return ret;
 
     //#if LOG_LVL_RAB_CFG >= LOG_DEBUG
-    //    printf("[DD] Configured RAB slice:\n");
+    //    printf("[DD] Configured RAB slice:\r\n");
     //    print_rab_cfg_val(&cfg);
-    //    printf("\n");
+    //    printf("\r\n");
     //#endif
 
     return 0;
@@ -346,9 +346,9 @@ int config_rab_l2_entry(const virt_pfn_t virt_pfn,
         return ret;
 
     //#if ( (LOG_LVL_RAB_CFG >= LOG_DEBUG) || (LOG_LVL_VMM >= LOG_TRACE) )
-    //    printf("[DD] Configured RAB L2 TLB entry:\n");
+    //    printf("[DD] Configured RAB L2 TLB entry:\r\n");
     //    print_rab_cfg_l2_val(varam_ptr, param_ptr, &cfg, entry);
-    //    printf("\n");
+    //    printf("\r\n");
     //#endif
 
     return 0;

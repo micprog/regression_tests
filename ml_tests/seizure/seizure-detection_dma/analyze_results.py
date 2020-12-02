@@ -103,17 +103,17 @@ for ind_func in range (0, func_len):
 # excel output
 	fsummary = open('results/'+builddirs[jdx]+'/summary_'+builddirs[jdx],'a')
 
-	fsummary.write(func_id[ind_func]+"\n")
+	fsummary.write(func_id[ind_func]+"\r\n")
 	fsummary.write('AppName ; Version ; ')
 	for idx in range (0,prof_len):
 		fsummary.write(prof_list[idx]+' ; ')
-	fsummary.write(' test_result ; \n')
+	fsummary.write(' test_result ; \r\n')
 
 	for idx in range (0,num_lines):
 		fsummary.write('\''+names[idx]+'\' ; \''+builddirs[jdx]+'\' ; ')
 		for k in range (0, prof_len):
 			fsummary.write(str(prof_dif[idx][k])+' ; ')
-		fsummary.write(' '+res[idx]+' \n')
+		fsummary.write(' '+res[idx]+' \r\n')
 	fsummary.close()
 
 ##############################################
@@ -122,9 +122,9 @@ for ind_func in range (0, func_len):
 	f = open(result_filename,'a')
 
 	for idx in range (0, prof_len):
-		f.write(func_name[ind_func]+'_'+prof_list[idx]+' = [ ...\n')
+		f.write(func_name[ind_func]+'_'+prof_list[idx]+' = [ ...\r\n')
 		for k in range (0, num_lines):
-			f.write(str(prof_dif[k][idx])+',...\n')
-		f.write('];\n')
+			f.write(str(prof_dif[k][idx])+',...\r\n')
+		f.write('];\r\n')
 	f.close()
 

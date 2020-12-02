@@ -67,7 +67,7 @@ l2_end       = l2_start + l2_size * 8 - 1
 ###############################################################################
 def dump_bytes( filetoprint, addr, data_s):
     for i in xrange(0,4,1):
-        filetoprint.write("@%08X %s\n" % ( addr+i,  data_s[i*2:(i+1)*2] ))
+        filetoprint.write("@%08X %s\r\n" % ( addr+i,  data_s[i*2:(i+1)*2] ))
 
 ###############################################################################
 # Read s19 file and put data bytes into a dictionary
@@ -187,28 +187,28 @@ for addr in sorted(slm_dict.keys()):
                 data_even = data
             else:
                 data_odd  = data
-                if archi == 'GAP': rom_file.write("@%x %s%s\n" % ((addr & 0xffff) / 2, data_odd, data_even))
+                if archi == 'GAP': rom_file.write("@%x %s%s\r\n" % ((addr & 0xffff) / 2, data_odd, data_even))
                 elif archi in [ 'gap9', 'vega', 'wolfe', 'quentin', 'devchip', 'pulp', 'pulpissimo']:
-                    rom_file.write("{0:032b}\n" .format(int('0x' + data_even, 16)))
-                    rom_file.write("{0:032b}\n" .format(int('0x' + data_odd,  16)))
-                    #rom_file.write("@%x %s\n" % ((addr & 0xffff)-1, data_even))
-                    #rom_file.write("@%x %s\n" % ((addr & 0xffff), data_odd))
+                    rom_file.write("{0:032b}\r\n" .format(int('0x' + data_even, 16)))
+                    rom_file.write("{0:032b}\r\n" .format(int('0x' + data_odd,  16)))
+                    #rom_file.write("@%x %s\r\n" % ((addr & 0xffff)-1, data_even))
+                    #rom_file.write("@%x %s\r\n" % ((addr & 0xffff), data_odd))
                 elif archi == 'vivosoc3':
-                    rom_file.write("@%x %s\n" % ((addr & 0xffff)-1, data_even))
-                    rom_file.write("@%x %s\n" % ((addr & 0xffff), data_odd))
-                else: rom_file.write("%s%s\n" % (data_odd, data_even))
-                vlog_file.write("    64'h%s%s,\n" % (data_odd, data_even))
+                    rom_file.write("@%x %s\r\n" % ((addr & 0xffff)-1, data_even))
+                    rom_file.write("@%x %s\r\n" % ((addr & 0xffff), data_odd))
+                else: rom_file.write("%s%s\r\n" % (data_odd, data_even))
+                vlog_file.write("    64'h%s%s,\r\n" % (data_odd, data_even))
         else:
             if((addr%2) == 0):
                 data_even = data
-                rom_file.write("%s\n" % (data))
-                vlog_file.write("    32'h%s,\n" % (data))
+                rom_file.write("%s\r\n" % (data))
+                vlog_file.write("    32'h%s,\r\n" % (data))
             else:
                 data_odd  = data
-                rom_file.write("%s\n" % (data))
-                vlog_file.write("    32'h%s,\n" % (data))
+                rom_file.write("%s\r\n" % (data))
+                vlog_file.write("    32'h%s,\r\n" % (data))
 
-# remove ,\n
+# remove ,\r\n
 vlog_file.seek(-2, os.SEEK_END)
 vlog_file.write("""};
 
